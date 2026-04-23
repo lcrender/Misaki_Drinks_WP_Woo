@@ -1,0 +1,11 @@
+.env
+.DS_Store
+docker/mysql/
+
+# WordPress runtime (no versionar en repo)
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/backup-db/
+wp-content/backups/
+wp-content/debug.log
