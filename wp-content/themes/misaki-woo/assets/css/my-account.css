@@ -1,0 +1,635 @@
+/**
+ * My Account — Misaki Woo
+ */
+
+.site-main--account {
+    padding: 0;
+    max-width: none;
+    background: #050505;
+}
+
+.misaki-account.home-dark-section {
+    border-top: 0;
+    min-height: 100svh;
+}
+
+.misaki-account__inner {
+    width: min(100%, 72rem);
+    margin: 0 auto;
+    padding: calc(var(--misaki-header-h) + 2rem) 1.25rem 4rem;
+}
+
+.misaki-account__title {
+    max-width: 36rem;
+    margin: 0 auto 2rem;
+    padding: 0 1rem;
+}
+
+.misaki-account__inner > .woocommerce {
+    width: 100%;
+}
+
+.misaki-account__inner .entry-header,
+.misaki-account__inner .wp-block-post-title,
+.misaki-account__inner > h1:not(.misaki-account__title) {
+    display: none;
+}
+
+/* ——— Invitado (login / registro) ——— */
+.misaki-account__guest,
+.misaki-account__inner > .woocommerce:not(:has(.misaki-account__layout)) {
+    width: 100%;
+    margin-inline: auto;
+}
+
+.misaki-account__guest:not(:has(#customer_login)),
+.misaki-account__inner > .woocommerce:not(:has(.misaki-account__layout)):not(:has(#customer_login)) {
+    max-width: min(100%, 28rem);
+}
+
+.misaki-account__guest:has(#customer_login) {
+    max-width: min(100%, 56rem);
+}
+
+.misaki-account__guest:not(:has(#customer_login)) {
+    padding: 1.75rem 1.25rem;
+    border: 1px solid rgba(200, 168, 90, 0.28);
+    border-radius: 1.25rem;
+    background: #f6f5f2;
+    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.2);
+}
+
+.misaki-account__guest #customer_login {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    width: 100%;
+    margin: 0;
+}
+
+.misaki-account__guest #customer_login::before,
+.misaki-account__guest #customer_login::after {
+    display: none;
+    content: none;
+}
+
+.misaki-account__guest #customer_login .u-column1,
+.misaki-account__guest #customer_login .u-column2,
+.misaki-account__guest #customer_login .col-1,
+.misaki-account__guest #customer_login .col-2 {
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+    max-width: none;
+    float: none;
+    margin: 0;
+    padding: 1.75rem 1.25rem;
+    border: 1px solid rgba(200, 168, 90, 0.28);
+    border-radius: 1.25rem;
+    background: #f6f5f2;
+    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.2);
+}
+
+.misaki-account__guest h2,
+.misaki-account__inner > .woocommerce:not(:has(.misaki-account__layout)) h2 {
+    margin: 0 0 1.25rem;
+    color: var(--misaki-gold);
+    font-family: var(--misaki-title-font);
+    font-size: 1.125rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.misaki-account__guest .woocommerce-form-login,
+.misaki-account__guest .woocommerce-form-register,
+.misaki-account__inner > .woocommerce:not(:has(.misaki-account__layout)) .woocommerce-form-login,
+.misaki-account__inner > .woocommerce:not(:has(.misaki-account__layout)) .woocommerce-form-register {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.misaki-account__guest:not(:has(#customer_login)) .woocommerce-form-login,
+.misaki-account__guest:not(:has(#customer_login)) .woocommerce-form-register {
+    width: 100%;
+}
+
+.misaki-account__guest label,
+.misaki-account__inner > .woocommerce:not(:has(.misaki-account__layout)) label {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: #4a4a4a;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.misaki-account__guest .woocommerce-form__label-for-checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.misaki-account__guest .input-text,
+.misaki-account__guest input[type="text"],
+.misaki-account__guest input[type="email"],
+.misaki-account__guest input[type="password"],
+.misaki-account__inner > .woocommerce:not(:has(.misaki-account__layout)) .input-text,
+.misaki-account__inner > .woocommerce:not(:has(.misaki-account__layout)) input[type="text"],
+.misaki-account__inner > .woocommerce:not(:has(.misaki-account__layout)) input[type="email"],
+.misaki-account__inner > .woocommerce:not(:has(.misaki-account__layout)) input[type="password"] {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid rgba(200, 168, 90, 0.45);
+    border-radius: 0.5rem;
+    background: #fff;
+    color: #1a1a1a;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    box-sizing: border-box;
+}
+
+.misaki-account__guest .form-row,
+.misaki-account__inner > .woocommerce:not(:has(.misaki-account__layout)) .form-row {
+    margin: 0 0 1rem;
+}
+
+.misaki-account__guest .woocommerce-form-register > p:not(.form-row),
+.misaki-account__guest .woocommerce-privacy-policy-text,
+.misaki-account__guest .woocommerce-privacy-policy-text p {
+    margin: 0 0 1rem;
+    color: #5a5a5a;
+    font-size: 0.8125rem;
+    font-weight: 300;
+    line-height: 1.65;
+}
+
+.misaki-account__guest .woocommerce-privacy-policy-text a {
+    color: var(--misaki-gold);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+.misaki-account__guest .woocommerce-form-login .form-row:has(.woocommerce-form-login__submit) {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.misaki-account__guest .woocommerce-form-login__submit,
+.misaki-account__guest .woocommerce-form-register__submit {
+    width: 100%;
+}
+
+.misaki-account__guest .woocommerce-form-register .form-row:last-child {
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+.misaki-account__guest .lost_password {
+    margin: 0;
+    text-align: center;
+}
+
+.misaki-account__guest .lost_password a {
+    color: var(--misaki-gold);
+    font-size: 0.8125rem;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+.misaki-account__guest .woocommerce-notices-wrapper {
+    margin-bottom: 1rem;
+}
+
+.misaki-account__guest .woocommerce-notices-wrapper:empty {
+    display: none;
+    margin: 0;
+}
+
+/* ——— Layout logueado ——— */
+.misaki-account__layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    align-items: start;
+}
+
+.misaki-account__content {
+    width: 100%;
+    min-width: 0;
+    padding: 1.5rem 1.25rem;
+    border: 1px solid rgba(200, 168, 90, 0.28);
+    border-radius: 1.25rem;
+    background: #f6f5f2;
+    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.2);
+    color: #4a4a4a;
+}
+
+/* ——— Navegación ——— */
+.misaki-account .woocommerce-MyAccount-navigation {
+    width: 100%;
+}
+
+.misaki-account .woocommerce-MyAccount-navigation ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.misaki-account .woocommerce-MyAccount-navigation li {
+    margin: 0;
+}
+
+.misaki-account .woocommerce-MyAccount-navigation a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(200, 168, 90, 0.35);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--misaki-gold);
+    font-family: var(--misaki-title-font);
+    font-size: 0.6875rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.misaki-account .woocommerce-MyAccount-navigation a:hover,
+.misaki-account .woocommerce-MyAccount-navigation a:focus-visible {
+    color: #f2e4b8;
+    background: rgba(200, 168, 90, 0.12);
+    border-color: var(--misaki-gold);
+    outline: none;
+}
+
+.misaki-account .woocommerce-MyAccount-navigation li.is-active a {
+    background: rgba(200, 168, 90, 0.18);
+    border-color: var(--misaki-gold);
+    color: #f2e4b8;
+}
+
+/* ——— Contenido ——— */
+.misaki-account__content p,
+.misaki-account__content li {
+    font-size: 0.9375rem;
+    font-weight: 300;
+    line-height: 1.7;
+}
+
+.misaki-account__content a {
+    color: var(--misaki-gold);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+.misaki-account__content a:hover,
+.misaki-account__content a:focus-visible {
+    color: #9f8448;
+}
+
+.misaki-account__content h2,
+.misaki-account__content h3 {
+    color: var(--misaki-gold);
+    font-family: var(--misaki-title-font);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.misaki-account__content h2 {
+    margin: 0 0 1rem;
+    font-size: 1.125rem;
+}
+
+.misaki-account__content h3 {
+    margin: 1.5rem 0 0.75rem;
+    font-size: 0.875rem;
+}
+
+/* ——— Formularios ——— */
+.misaki-account__content label {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: #4a4a4a;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.misaki-account__content .input-text,
+.misaki-account__content input[type="text"],
+.misaki-account__content input[type="email"],
+.misaki-account__content input[type="password"],
+.misaki-account__content input[type="tel"],
+.misaki-account__content select,
+.misaki-account__content textarea {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid rgba(200, 168, 90, 0.45);
+    border-radius: 0.5rem;
+    background: #fff;
+    color: #1a1a1a;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    box-sizing: border-box;
+}
+
+.misaki-account__content textarea {
+    min-height: 6rem;
+    resize: vertical;
+}
+
+.misaki-account__content .form-row {
+    margin: 0 0 1rem;
+}
+
+.misaki-account__content fieldset {
+    margin: 0 0 1.5rem;
+    padding: 0;
+    border: 0;
+}
+
+.misaki-account__content fieldset legend {
+    margin-bottom: 0.75rem;
+    padding: 0;
+    color: var(--misaki-gold);
+    font-family: var(--misaki-title-font);
+    font-size: 0.8125rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.misaki-account__content .woocommerce-form__label-for-checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 400;
+}
+
+/* ——— Botones ——— */
+.misaki-account .button,
+.misaki-account button[type="submit"],
+.misaki-account a.button {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0.65rem 1.25rem !important;
+    border: 1px solid #000 !important;
+    border-radius: 0.5rem !important;
+    background: #000 !important;
+    background-color: #000 !important;
+    color: #fff !important;
+    box-shadow: none !important;
+    font-family: var(--misaki-title-font) !important;
+    font-size: 0.75rem !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.08em !important;
+    line-height: 1.2 !important;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.misaki-account .button:hover,
+.misaki-account .button:focus-visible,
+.misaki-account button[type="submit"]:hover,
+.misaki-account button[type="submit"]:focus-visible,
+.misaki-account a.button:hover,
+.misaki-account a.button:focus-visible {
+    background: #222 !important;
+    background-color: #222 !important;
+    border-color: #222 !important;
+    color: #fff !important;
+    outline: none;
+}
+
+.misaki-account .woocommerce-Button--alt,
+.misaki-account a.woocommerce-Button--alt {
+    background: transparent !important;
+    color: var(--misaki-gold) !important;
+    border-color: rgba(200, 168, 90, 0.55) !important;
+}
+
+.misaki-account .woocommerce-Button--alt:hover,
+.misaki-account a.woocommerce-Button--alt:hover {
+    background: rgba(200, 168, 90, 0.12) !important;
+    color: #4a4a4a !important;
+}
+
+/* ——— Tablas (pedidos, etc.) ——— */
+.misaki-account__content table.shop_table {
+    width: 100%;
+    margin: 0 0 1.5rem;
+    border: 1px solid rgba(200, 168, 90, 0.25);
+    border-radius: 0.75rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    font-size: 0.875rem;
+}
+
+.misaki-account__content table.shop_table th,
+.misaki-account__content table.shop_table td {
+    padding: 0.75rem 0.85rem;
+    border-bottom: 1px solid rgba(200, 168, 90, 0.15);
+    text-align: left;
+    vertical-align: middle;
+}
+
+.misaki-account__content table.shop_table thead th {
+    background: rgba(200, 168, 90, 0.12);
+    color: #4a4a4a;
+    font-family: var(--misaki-title-font);
+    font-size: 0.6875rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.misaki-account__content table.shop_table tr:last-child td,
+.misaki-account__content table.shop_table tr:last-child th {
+    border-bottom: 0;
+}
+
+.misaki-account__content .woocommerce-orders-table__cell-order-actions a {
+    margin-right: 0.35rem;
+    margin-bottom: 0.35rem;
+}
+
+.misaki-account .woocommerce-customer-details--document-type,
+.misaki-account .woocommerce-customer-details--document-number {
+    margin: 0.35rem 0 0;
+    font-size: 0.875rem;
+}
+
+/* ——— Avisos ——— */
+.misaki-account .woocommerce-message,
+.misaki-account .woocommerce-info,
+.misaki-account .woocommerce-error {
+    margin: 0 0 1rem;
+    padding: 0.85rem 1rem;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    list-style: none;
+}
+
+.misaki-account .woocommerce-message {
+    border: 1px solid rgba(200, 168, 90, 0.45);
+    background: rgba(200, 168, 90, 0.12);
+    color: #4a4a4a;
+}
+
+.misaki-account .woocommerce-error {
+    border: 1px solid rgba(180, 60, 60, 0.35);
+    background: rgba(180, 60, 60, 0.08);
+    color: #6b2e2e;
+}
+
+.misaki-account .woocommerce-info {
+    border: 1px solid rgba(30, 133, 190, 0.35);
+    background: rgba(30, 133, 190, 0.08);
+    color: #2a5a72;
+}
+
+.misaki-account .woocommerce-message::before,
+.misaki-account .woocommerce-info::before,
+.misaki-account .woocommerce-error::before {
+    display: none;
+    content: none;
+}
+
+.misaki-account .woocommerce-MyAccount-content .woocommerce-notices-wrapper {
+    margin-bottom: 1rem;
+}
+
+.misaki-account .lost_password a {
+    color: var(--misaki-gold);
+    font-size: 0.8125rem;
+}
+
+/* ——— Recuperar / restablecer contraseña (fondo oscuro) ——— */
+.misaki-account .lost_reset_password {
+    max-width: 32rem;
+    margin-inline: auto;
+}
+
+.misaki-account .lost_reset_password > p,
+.misaki-account .lost_reset_password label,
+.misaki-account .lost_reset_password .screen-reader-text {
+    color: #fff;
+}
+
+.misaki-account .lost_reset_password label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.misaki-account .lost_reset_password > p:first-of-type {
+    margin: 0 0 1.25rem;
+    font-size: 0.9375rem;
+    font-weight: 300;
+    line-height: 1.7;
+    text-align: center;
+}
+
+.misaki-account .lost_reset_password label .required {
+    color: var(--misaki-gold);
+}
+
+.misaki-account .lost_reset_password .input-text,
+.misaki-account .lost_reset_password input[type="text"],
+.misaki-account .lost_reset_password input[type="email"],
+.misaki-account .lost_reset_password input[type="password"] {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid rgba(200, 168, 90, 0.45);
+    border-radius: 0.5rem;
+    background: #fff;
+    color: #1a1a1a;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    box-sizing: border-box;
+}
+
+.misaki-account .lost_reset_password .form-row {
+    margin: 0 0 1rem;
+}
+
+@media (min-width: 48rem) {
+    .misaki-account__inner {
+        padding-inline: 2rem;
+        padding-bottom: 5rem;
+    }
+
+    .misaki-account__layout {
+        grid-template-columns: minmax(0, 14rem) minmax(0, 1fr);
+        gap: 1.5rem;
+    }
+
+    .misaki-account .woocommerce-MyAccount-navigation ul {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .misaki-account .woocommerce-MyAccount-navigation a {
+        width: 100%;
+        justify-content: flex-start;
+        border-radius: 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .misaki-account__guest #customer_login {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+        align-items: stretch;
+    }
+
+    .misaki-account__guest:not(:has(#customer_login)) {
+        padding: 2rem 1.75rem;
+    }
+
+    .misaki-account__guest #customer_login .u-column1,
+    .misaki-account__guest #customer_login .u-column2,
+    .misaki-account__guest #customer_login .col-1,
+    .misaki-account__guest #customer_login .col-2 {
+        padding: 2rem 1.75rem;
+    }
+
+    .misaki-account__content {
+        padding: 2rem 1.75rem;
+    }
+}

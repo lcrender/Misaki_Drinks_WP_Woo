@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
 
 get_header();
 ?>
-<main class="site-main">
+<main id="site-main" class="site-main" tabindex="-1">
     <?php if (have_posts()) : ?>
         <?php while (have_posts()) : the_post(); ?>
             <article <?php post_class(); ?>>

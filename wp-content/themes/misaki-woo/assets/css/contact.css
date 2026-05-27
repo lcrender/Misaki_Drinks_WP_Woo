@@ -1,0 +1,323 @@
+/**
+ * Página Contact — Misaki Woo
+ */
+
+.contact-page.site-main {
+    padding: 0;
+    background: #111111;
+}
+
+/* Get in touch: degradé claro arriba (legible) */
+.contact-section--intro {
+    background:
+        radial-gradient(circle at 50% 0%, rgba(90, 90, 90, 0.32), transparent 36rem),
+        linear-gradient(180deg, #2a2a2a 0%, #151515 45%, #050505 100%);
+}
+
+/* Distributors: imagen de fondo (editable desde admin) */
+.contact-section--distributors {
+    background-color: #0a0a0a;
+    background-image: var(--contact-distributors-bg);
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    border-top: 1px solid #c8a85a1f;
+    box-shadow: 0 -2rem 4rem rgba(0, 0, 0, 0.25);
+}
+
+.contact-section__inner {
+    width: min(100%, 72rem);
+    margin: 0 auto;
+    padding: 5rem 1.25rem;
+}
+
+.contact-section--distributors .contact-section__inner {
+    padding-bottom: 7.5rem;
+}
+
+/* ——— Get in touch ——— */
+.contact-intro {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.contact-intro__title {
+    max-width: 36rem;
+    margin: 0 auto 2rem;
+    padding: 0;
+}
+
+.contact-intro__lead {
+    margin: 0 0 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.55;
+}
+
+.contact-intro__social {
+    margin: 0 0 2.5rem;
+}
+
+.contact-intro__instagram {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--misaki-gold);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.contact-intro__instagram:hover {
+    color: #f2e4b8;
+}
+
+.contact-intro__instagram-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+}
+
+.contact-team__columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 2px minmax(0, 1fr);
+    gap: 1rem 1.25rem;
+    align-items: stretch;
+}
+
+.contact-team__columns--company {
+    margin-top: 2.5rem;
+    align-items: center;
+}
+
+.contact-team__divider {
+    width: 2px;
+    min-height: 100%;
+    align-self: stretch;
+    justify-self: center;
+    background: var(--misaki-gold);
+}
+
+.contact-team__left {
+    display: grid;
+    gap: 2rem;
+    text-align: right;
+}
+
+.contact-team__right {
+    display: grid;
+    gap: 2rem;
+    text-align: left;
+}
+
+.contact-team__person-meta,
+.contact-team__person-contact {
+    min-height: 4.5rem;
+}
+
+.contact-team__name {
+    margin: 0;
+    color: #ffffff;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.contact-team__role {
+    margin: 0.35rem 0 0;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+.contact-team__role-ja {
+    margin: 0.35rem 0 0;
+    color: var(--misaki-gold);
+    font-size: 0.6875rem;
+    letter-spacing: 0.04em;
+}
+
+.contact-team__person-contact p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+}
+
+.contact-team__person-contact p + p {
+    margin-top: 0.25rem;
+}
+
+.contact-team__person-contact a,
+.contact-distributors__item-line a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.contact-team__person-contact a:hover,
+.contact-distributors__item-line a:hover {
+    color: var(--misaki-gold);
+}
+
+.contact-team__columns--company .contact-team__left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.contact-team__columns--company .contact-team__right {
+    display: flex;
+    align-items: center;
+}
+
+.contact-team__address {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    white-space: pre-line;
+}
+
+.contact-intro__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid rgba(200, 168, 90, 0.28);
+    border-radius: 1.25rem;
+}
+
+/* ——— Distributors ——— */
+.contact-distributors__title.misaki-section-title {
+    max-width: 36rem;
+    margin: 0 auto 2rem;
+    padding: 0;
+}
+
+.contact-distributors__lead {
+    margin: 0 0 4.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.55;
+    max-width: 40rem;
+    text-align: left;
+}
+
+.contact-distributors__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+}
+
+.contact-distributors__country + .contact-distributors__country {
+    margin-top: 2rem;
+}
+
+.contact-distributors__country-name {
+    margin: 0 0 1rem;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.contact-distributors__flag {
+    margin-left: 0.35rem;
+}
+
+.contact-distributors__item + .contact-distributors__item {
+    margin-top: 1.25rem;
+}
+
+.contact-distributors__item-name {
+    margin: 0 0 0.35rem;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.contact-distributors__item-line {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.8125rem;
+    line-height: 1.55;
+}
+
+.contact-distributors__item-line span {
+    font-weight: 600;
+}
+
+@media (min-width: 48rem) {
+    .contact-section__inner {
+        padding: 5.5rem 2rem 6rem;
+    }
+
+    .contact-intro {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        grid-template-rows: auto auto;
+        column-gap: 3rem;
+        row-gap: 0;
+    }
+
+    .contact-intro__copy {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .contact-team {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .contact-intro__media {
+        grid-column: 2;
+        grid-row: 2;
+        align-self: start;
+    }
+
+    .contact-intro__lead,
+    .contact-distributors__lead {
+        font-size: 1rem;
+    }
+
+    .contact-distributors__grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 3rem;
+        align-items: start;
+    }
+
+    .contact-distributors__country + .contact-distributors__country {
+        margin-top: 2.5rem;
+    }
+
+    .contact-intro__image {
+        min-height: 24rem;
+    }
+
+    .contact-section--distributors .contact-section__inner {
+        padding-bottom: 9.5rem;
+    }
+
+    .contact-distributors__lead {
+        margin-bottom: 5.5rem;
+    }
+
+    .contact-distributors__title.misaki-section-title {
+        align-items: flex-start;
+        max-width: none;
+        margin: 0 0 2rem;
+        text-align: left;
+    }
+
+    .contact-distributors__title.misaki-section-title::after {
+        align-self: flex-start;
+    }
+}

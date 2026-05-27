@@ -1,0 +1,559 @@
+/**
+ * Checkout — Misaki Woo
+ */
+
+.site-main--checkout {
+    padding: 0;
+    max-width: none;
+    background: #050505;
+}
+
+.misaki-checkout.home-dark-section {
+    border-top: 0;
+    min-height: 100svh;
+}
+
+.misaki-checkout__inner {
+    width: min(100%, 72rem);
+    margin: 0 auto;
+    padding: calc(var(--misaki-header-h) + 2rem) 1.25rem 4rem;
+}
+
+.misaki-checkout__title {
+    max-width: 36rem;
+    margin: 0 auto 2rem;
+    padding: 0 1rem;
+}
+
+.misaki-checkout__inner > .woocommerce {
+    width: 100%;
+    max-width: 100%;
+}
+
+.misaki-checkout__inner .entry-header,
+.misaki-checkout__inner .wp-block-post-title,
+.misaki-checkout__inner > h1:not(.misaki-checkout__title),
+.misaki-checkout__inner article > h1 {
+    display: none;
+}
+
+/* ——— Paneles ——— */
+.misaki-checkout__panel {
+    padding: 1.5rem 1.25rem;
+    border: 1px solid rgba(200, 168, 90, 0.28);
+    border-radius: 1.25rem;
+    background: #f6f5f2;
+    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.2);
+    color: #4a4a4a;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+/* ——— Anular floats WooCommerce ——— */
+.misaki-checkout .col2-set::before,
+.misaki-checkout .col2-set::after,
+.misaki-checkout #payment::before,
+.misaki-checkout #payment::after,
+.misaki-checkout .place-order::before,
+.misaki-checkout .place-order::after {
+    display: none;
+    content: none;
+}
+
+.misaki-checkout #customer_details.col2-set,
+.misaki-checkout #customer_details .col-1,
+.misaki-checkout #customer_details .col-2 {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100%;
+}
+
+.misaki-checkout #customer_details.col2-set {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 0;
+}
+
+.misaki-checkout .woocommerce-message .button,
+.misaki-checkout .woocommerce-info .button,
+.misaki-checkout .woocommerce-error .button {
+    float: none !important;
+    margin-top: 0.5rem;
+}
+
+/* ——— Avisos ——— */
+.misaki-checkout__inner > .woocommerce > .woocommerce-notices-wrapper {
+    margin-bottom: 1rem;
+}
+
+.misaki-checkout .woocommerce-message,
+.misaki-checkout .woocommerce-info,
+.misaki-checkout .woocommerce-error {
+    margin: 0 0 1rem;
+    padding: 0.85rem 1rem;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    list-style: none;
+}
+
+.misaki-checkout .woocommerce-message {
+    border: 1px solid rgba(200, 168, 90, 0.45);
+    background: rgba(200, 168, 90, 0.12);
+    color: #4a4a4a;
+}
+
+.misaki-checkout .woocommerce-error {
+    border: 1px solid rgba(180, 60, 60, 0.35);
+    background: rgba(180, 60, 60, 0.08);
+    color: #6b2e2e;
+}
+
+.misaki-checkout .woocommerce-info {
+    border: 1px solid rgba(30, 133, 190, 0.35);
+    background: rgba(30, 133, 190, 0.08);
+    color: #2a5a72;
+}
+
+.misaki-checkout .woocommerce-message::before,
+.misaki-checkout .woocommerce-info::before,
+.misaki-checkout .woocommerce-error::before {
+    display: none;
+    content: none;
+}
+
+/* ——— Login / cupón ——— */
+.misaki-checkout .woocommerce-form-login-toggle,
+.misaki-checkout .woocommerce-form-coupon-toggle {
+    margin: 0 0 1rem;
+    font-size: 0.875rem;
+}
+
+.misaki-checkout .woocommerce-form-login-toggle .woocommerce-info,
+.misaki-checkout .woocommerce-form-coupon-toggle .woocommerce-info {
+    margin: 0;
+}
+
+.misaki-checkout .woocommerce-form-login-toggle a,
+.misaki-checkout .woocommerce-form-coupon-toggle a {
+    color: var(--misaki-gold);
+}
+
+.misaki-checkout form.woocommerce-form-login,
+.misaki-checkout form.checkout_coupon {
+    max-width: min(100%, 28rem);
+    margin: 0 0 1.25rem;
+    padding: 1.25rem;
+    border: 1px solid rgba(200, 168, 90, 0.28);
+    border-radius: 1rem;
+    background: #f6f5f2;
+}
+
+.misaki-checkout form.checkout_coupon {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.misaki-checkout form.checkout_coupon .form-row-first {
+    grid-column: 1;
+    margin: 0;
+}
+
+.misaki-checkout form.checkout_coupon .form-row-last {
+    grid-column: 2;
+    margin: 0;
+}
+
+/* ——— Layout checkout ——— */
+.misaki-checkout__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    align-items: start;
+}
+
+.misaki-checkout__main,
+.misaki-checkout__sidebar {
+    min-width: 0;
+}
+
+.misaki-checkout form.checkout.woocommerce-checkout {
+    margin: 0;
+}
+
+/* ——— Títulos de sección ——— */
+.misaki-checkout .woocommerce-billing-fields > h3,
+.misaki-checkout .woocommerce-shipping-fields > h3,
+.misaki-checkout .woocommerce-additional-fields > h3,
+.misaki-checkout #order_review_heading {
+    margin: 0 0 1rem;
+    color: var(--misaki-gold);
+    font-family: var(--misaki-title-font);
+    font-size: 1.125rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.misaki-checkout #order_review_heading {
+    text-align: center;
+}
+
+/* ——— Campos ——— */
+.misaki-checkout label {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: #4a4a4a;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.misaki-checkout .form-row {
+    margin: 0 0 1rem;
+}
+
+.misaki-checkout .input-text,
+.misaki-checkout input[type="text"],
+.misaki-checkout input[type="email"],
+.misaki-checkout input[type="tel"],
+.misaki-checkout input[type="password"],
+.misaki-checkout select,
+.misaki-checkout textarea {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid rgba(200, 168, 90, 0.45);
+    border-radius: 0.5rem;
+    background: #fff;
+    color: #1a1a1a;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    box-sizing: border-box;
+}
+
+.misaki-checkout textarea {
+    min-height: 5rem;
+    resize: vertical;
+}
+
+.misaki-checkout .select2-container--default .select2-selection--single {
+    min-height: 2.75rem;
+    border: 1px solid rgba(200, 168, 90, 0.45);
+    border-radius: 0.5rem;
+    background: #fff;
+}
+
+.misaki-checkout .select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 2.5rem;
+    padding-inline: 0.75rem;
+    color: #1a1a1a;
+}
+
+.misaki-checkout .select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 2.5rem;
+}
+
+.misaki-checkout .woocommerce-form__label-for-checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 400;
+}
+
+.misaki-checkout .woocommerce-billing-fields__field-wrapper::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+.misaki-checkout .woocommerce-billing-fields .form-row-first,
+.misaki-checkout .woocommerce-billing-fields .form-row-last {
+    float: left;
+    width: 48%;
+    overflow: visible;
+}
+
+.misaki-checkout .woocommerce-billing-fields .form-row-wide {
+    clear: both;
+    width: 100%;
+}
+
+/* ——— Resumen del pedido ——— */
+.misaki-checkout .woocommerce-checkout-review-order-table {
+    width: 100%;
+    margin: 0 0 1rem;
+    border: 1px solid rgba(200, 168, 90, 0.22);
+    border-radius: 0.75rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    font-size: 0.875rem;
+}
+
+.misaki-checkout .woocommerce-checkout-review-order-table th,
+.misaki-checkout .woocommerce-checkout-review-order-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid rgba(200, 168, 90, 0.15);
+    text-align: left;
+    vertical-align: top;
+}
+
+.misaki-checkout .woocommerce-checkout-review-order-table thead th {
+    background: rgba(200, 168, 90, 0.12);
+    color: #4a4a4a;
+    font-family: var(--misaki-title-font);
+    font-size: 0.6875rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.misaki-checkout .woocommerce-checkout-review-order-table .product-name {
+    word-break: break-word;
+}
+
+.misaki-checkout .woocommerce-checkout-review-order-table .product-total,
+.misaki-checkout .woocommerce-checkout-review-order-table tfoot td {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.misaki-checkout .woocommerce-checkout-review-order-table tr:last-child th,
+.misaki-checkout .woocommerce-checkout-review-order-table tr:last-child td {
+    border-bottom: 0;
+}
+
+.misaki-checkout .woocommerce-checkout-review-order-table .order-total th,
+.misaki-checkout .woocommerce-checkout-review-order-table .order-total td {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* ——— Pago ——— */
+.misaki-checkout #payment {
+    background: transparent;
+    border-radius: 0;
+}
+
+.misaki-checkout #payment .payment_methods {
+    margin: 0 0 1rem;
+    padding: 0;
+    border: 1px solid rgba(200, 168, 90, 0.22);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    list-style: none;
+}
+
+.misaki-checkout #payment .payment_methods li {
+    margin: 0;
+    padding: 0.85rem 0.75rem;
+    border-bottom: 1px solid rgba(200, 168, 90, 0.15);
+    background: #fff;
+}
+
+.misaki-checkout #payment .payment_methods li:last-child {
+    border-bottom: 0;
+}
+
+.misaki-checkout #payment .payment_methods li label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    cursor: pointer;
+}
+
+.misaki-checkout #payment .payment_box {
+    margin: 0.75rem 0 0;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background: rgba(200, 168, 90, 0.08);
+    color: #4a4a4a;
+    font-size: 0.8125rem;
+}
+
+.misaki-checkout #payment .place-order {
+    margin: 0;
+    padding: 0;
+}
+
+.misaki-checkout #payment .place-order .button {
+    width: 100%;
+}
+
+.misaki-checkout .woocommerce-terms-and-conditions-wrapper {
+    margin-bottom: 1rem;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+}
+
+.misaki-checkout .woocommerce-terms-and-conditions-wrapper a {
+    color: var(--misaki-gold);
+}
+
+.misaki-checkout .woocommerce-customer-details--document-type,
+.misaki-checkout .woocommerce-customer-details--document-number {
+    margin: 0.35rem 0 0;
+    font-size: 0.875rem;
+}
+
+/* ——— Pedido confirmado ——— */
+.misaki-checkout .woocommerce-order {
+    max-width: min(100%, 36rem);
+    margin: 0 auto;
+    padding: 1.75rem 1.5rem;
+    border: 1px solid rgba(200, 168, 90, 0.28);
+    border-radius: 1.25rem;
+    background: #f6f5f2;
+    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.2);
+    color: #4a4a4a;
+    text-align: center;
+}
+
+.misaki-checkout .woocommerce-order-overview {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin: 1.25rem 0;
+    padding: 0;
+    list-style: none;
+}
+
+.misaki-checkout .woocommerce-order-overview li {
+    margin: 0;
+    padding: 0.75rem;
+    border: 1px solid rgba(200, 168, 90, 0.2);
+    border-radius: 0.5rem;
+    background: #fff;
+    font-size: 0.8125rem;
+}
+
+.misaki-checkout .woocommerce-order-overview li strong {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.9375rem;
+}
+
+.misaki-checkout .woocommerce-order-details,
+.misaki-checkout .woocommerce-customer-details {
+    margin-top: 1.5rem;
+    text-align: left;
+}
+
+.misaki-checkout .woocommerce-order-details__title,
+.misaki-checkout .woocommerce-column__title {
+    color: var(--misaki-gold);
+    font-family: var(--misaki-title-font);
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.misaki-checkout .shop_table.order_details {
+    width: 100%;
+    margin-top: 0.75rem;
+    border: 1px solid rgba(200, 168, 90, 0.22);
+    border-radius: 0.75rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    font-size: 0.875rem;
+}
+
+.misaki-checkout .shop_table.order_details th,
+.misaki-checkout .shop_table.order_details td {
+    padding: 0.75rem;
+    border-bottom: 1px solid rgba(200, 168, 90, 0.15);
+}
+
+/* ——— Botones ——— */
+.misaki-checkout .button,
+.misaki-checkout button[type="submit"],
+.misaki-checkout a.button,
+.misaki-checkout #place_order {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0.65rem 1.25rem !important;
+    border: 1px solid #000 !important;
+    border-radius: 0.5rem !important;
+    background: #000 !important;
+    background-color: #000 !important;
+    color: #fff !important;
+    box-shadow: none !important;
+    font-family: var(--misaki-title-font) !important;
+    font-size: 0.75rem !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.08em !important;
+    line-height: 1.2 !important;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.misaki-checkout .button:hover,
+.misaki-checkout .button:focus-visible,
+.misaki-checkout button[type="submit"]:hover,
+.misaki-checkout button[type="submit"]:focus-visible,
+.misaki-checkout a.button:hover,
+.misaki-checkout a.button:focus-visible,
+.misaki-checkout #place_order:hover,
+.misaki-checkout #place_order:focus-visible {
+    background: #222 !important;
+    background-color: #222 !important;
+    border-color: #222 !important;
+    color: #fff !important;
+    outline: none;
+}
+
+@media (max-width: 47.99rem) {
+    .misaki-checkout .woocommerce-billing-fields .form-row-first,
+    .misaki-checkout .woocommerce-billing-fields .form-row-last {
+        float: none;
+        width: 100%;
+    }
+
+    .misaki-checkout form.checkout_coupon {
+        grid-template-columns: 1fr;
+    }
+
+    .misaki-checkout form.checkout_coupon .form-row-last {
+        grid-column: 1;
+    }
+
+    .misaki-checkout form.checkout_coupon .form-row-last .button {
+        width: 100%;
+    }
+
+    .misaki-checkout .woocommerce-order-overview {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 48rem) {
+    .misaki-checkout__inner {
+        padding-inline: 2rem;
+        padding-bottom: 5rem;
+    }
+
+    .misaki-checkout__grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+        gap: 1.5rem;
+    }
+
+    .misaki-checkout__panel {
+        padding: 1.75rem 1.5rem;
+    }
+}
+
+@media (min-width: 64rem) {
+    .misaki-checkout__grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 24rem);
+    }
+}

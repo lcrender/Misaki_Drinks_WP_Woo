@@ -1,0 +1,704 @@
+/**
+ * Cart — Misaki Woo
+ */
+
+.site-main--cart {
+    padding: 0;
+    max-width: none;
+    background: #050505;
+}
+
+.misaki-cart.home-dark-section {
+    border-top: 0;
+    min-height: 100svh;
+}
+
+.misaki-cart__inner {
+    width: min(100%, 72rem);
+    margin: 0 auto;
+    padding: calc(var(--misaki-header-h) + 2rem) 1.25rem 4rem;
+}
+
+.misaki-cart__title {
+    max-width: 36rem;
+    margin: 0 auto 2rem;
+    padding: 0 1rem;
+}
+
+.misaki-cart__inner > .woocommerce {
+    width: 100%;
+}
+
+.misaki-cart__inner .entry-header,
+.misaki-cart__inner .wp-block-post-title,
+.misaki-cart__inner > h1:not(.misaki-cart__title),
+.misaki-cart__inner article > h1 {
+    display: none;
+}
+
+/* ——— Paneles claros ——— */
+.misaki-cart__panel {
+    padding: 1.5rem 1.25rem;
+    border: 1px solid rgba(200, 168, 90, 0.28);
+    border-radius: 1.25rem;
+    background: #f6f5f2;
+    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.2);
+    color: #4a4a4a;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.misaki-cart__inner .woocommerce {
+    max-width: 100%;
+}
+
+/* ——— Anular floats de WooCommerce layout ——— */
+.misaki-cart .cart-collaterals::before,
+.misaki-cart .cart-collaterals::after,
+.misaki-cart .wc-proceed-to-checkout::before,
+.misaki-cart .wc-proceed-to-checkout::after {
+    display: none;
+    content: none;
+}
+
+.misaki-cart .cart-collaterals,
+.misaki-cart .cart-collaterals .cart_totals,
+.misaki-cart .cart_totals {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100%;
+    clear: both !important;
+}
+
+.misaki-cart .cart td.actions {
+    text-align: left;
+}
+
+.misaki-cart .cart td.actions .coupon {
+    float: none !important;
+    width: 100%;
+    max-width: 100%;
+}
+
+.misaki-cart .woocommerce-message .button,
+.misaki-cart .woocommerce-info .button,
+.misaki-cart .woocommerce-error .button {
+    float: none !important;
+    margin-top: 0.5rem;
+}
+
+/* ——— Layout con ítems ——— */
+.misaki-cart__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    align-items: start;
+}
+
+.misaki-cart__main {
+    min-width: 0;
+}
+
+.misaki-cart__sidebar {
+    min-width: 0;
+    align-self: start;
+}
+
+.misaki-cart .cart-collaterals {
+    width: 100%;
+    float: none;
+    margin: 0;
+}
+
+.misaki-cart .cart_totals {
+    width: 100%;
+    float: none;
+    margin: 0;
+    padding: 0;
+}
+
+.misaki-cart .cart_totals table.shop_table {
+    width: 100%;
+    max-width: 100%;
+    table-layout: fixed;
+}
+
+.misaki-cart .cart_totals table.shop_table th,
+.misaki-cart .cart_totals table.shop_table td {
+    width: 50%;
+    word-break: break-word;
+}
+
+.misaki-cart__inner > .woocommerce > .woocommerce-notices-wrapper {
+    margin-bottom: 1rem;
+}
+
+.misaki-cart__main > .woocommerce-notices-wrapper {
+    display: none;
+}
+
+/* ——— Avisos ——— */
+.misaki-cart .woocommerce-message,
+.misaki-cart .woocommerce-info,
+.misaki-cart .woocommerce-error {
+    margin: 0 0 1rem;
+    padding: 0.85rem 1rem;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    list-style: none;
+}
+
+.misaki-cart .woocommerce-message {
+    border: 1px solid rgba(200, 168, 90, 0.45);
+    background: rgba(200, 168, 90, 0.12);
+    color: #4a4a4a;
+}
+
+.misaki-cart .woocommerce-error {
+    border: 1px solid rgba(180, 60, 60, 0.35);
+    background: rgba(180, 60, 60, 0.08);
+    color: #6b2e2e;
+}
+
+.misaki-cart .woocommerce-info {
+    border: 1px solid rgba(30, 133, 190, 0.35);
+    background: rgba(30, 133, 190, 0.08);
+    color: #2a5a72;
+}
+
+.misaki-cart .woocommerce-message::before,
+.misaki-cart .woocommerce-info::before,
+.misaki-cart .woocommerce-error::before {
+    display: none;
+    content: none;
+}
+
+/* ——— Tabla de productos ——— */
+.misaki-cart .woocommerce-cart-form {
+    margin: 0;
+    max-width: 100%;
+}
+
+.misaki-cart .woocommerce-cart-form__contents {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.misaki-cart table.shop_table {
+    width: 100%;
+    margin: 0;
+    border: 1px solid rgba(200, 168, 90, 0.22);
+    border-radius: 0.75rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.875rem;
+}
+
+.misaki-cart table.shop_table th,
+.misaki-cart table.shop_table td {
+    padding: 0.75rem 0.5rem;
+    border-bottom: 1px solid rgba(200, 168, 90, 0.15);
+    text-align: left;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+/* Anchos de columnas — producto prioritario */
+.misaki-cart .woocommerce-cart-form__contents .product-remove {
+    width: 2.25rem;
+    padding-inline: 0.35rem;
+    text-align: center;
+}
+
+.misaki-cart .woocommerce-cart-form__contents .product-thumbnail {
+    width: 4.25rem;
+    padding-inline: 0.35rem;
+}
+
+.misaki-cart .woocommerce-cart-form__contents .product-name {
+    width: 40%;
+    word-break: break-word;
+}
+
+.misaki-cart .woocommerce-cart-form__contents .product-price {
+    width: 13%;
+}
+
+.misaki-cart .woocommerce-cart-form__contents .product-quantity {
+    width: 13%;
+}
+
+.misaki-cart .woocommerce-cart-form__contents .product-subtotal {
+    width: 15%;
+    text-align: right;
+    padding-right: 0.75rem;
+}
+
+.misaki-cart table.shop_table thead th {
+    background: rgba(200, 168, 90, 0.12);
+    color: #4a4a4a;
+    font-family: var(--misaki-title-font);
+    font-size: 0.6875rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.misaki-cart table.shop_table tr:last-child td,
+.misaki-cart table.shop_table tr:last-child th {
+    border-bottom: 0;
+}
+
+.misaki-cart .product-remove .remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border: 1px solid rgba(200, 168, 90, 0.35);
+    border-radius: 999px;
+    background: #fff;
+    color: #4a4a4a;
+    font-size: 1.125rem;
+    line-height: 1;
+    text-decoration: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.misaki-cart .product-remove .remove:hover,
+.misaki-cart .product-remove .remove:focus-visible {
+    background: rgba(180, 60, 60, 0.08);
+    border-color: rgba(180, 60, 60, 0.45);
+    color: #6b2e2e;
+    outline: none;
+}
+
+.misaki-cart .product-thumbnail img {
+    display: block;
+    width: 3.25rem;
+    height: 3.25rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(200, 168, 90, 0.2);
+}
+
+.misaki-cart .product-name a {
+    color: #1a1a1a;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.misaki-cart .product-name a:hover,
+.misaki-cart .product-name a:focus-visible {
+    color: var(--misaki-gold);
+}
+
+.misaki-cart .product-name .variation,
+.misaki-cart .product-name dl {
+    margin: 0.35rem 0 0;
+    font-size: 0.8125rem;
+    color: #666;
+}
+
+.misaki-cart .product-price,
+.misaki-cart .product-subtotal {
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.misaki-cart .product-subtotal .amount,
+.misaki-cart .product-price .amount {
+    display: inline-block;
+}
+
+.misaki-cart .quantity .qty {
+    width: 3.5rem;
+    min-height: 2.5rem;
+    padding: 0.35rem 0.5rem;
+    border: 1px solid rgba(200, 168, 90, 0.45);
+    border-radius: 0.5rem;
+    background: #fff;
+    color: #1a1a1a;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.misaki-cart table.shop_table .actions {
+    padding: 1rem 0.75rem;
+    background: rgba(200, 168, 90, 0.06);
+}
+
+.misaki-cart .actions .coupon {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.5rem;
+    align-items: center;
+    margin: 0 0 0.75rem;
+    width: 100%;
+    max-width: 100%;
+}
+
+.misaki-cart .coupon .input-text {
+    width: 100%;
+    min-width: 0;
+    min-height: 2.75rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid rgba(200, 168, 90, 0.45);
+    border-radius: 0.5rem;
+    background: #fff;
+    color: #1a1a1a;
+    font-size: 0.9375rem;
+    box-sizing: border-box;
+}
+
+.misaki-cart .coupon .button {
+    white-space: nowrap;
+}
+
+.misaki-cart .actions > .button[name="update_cart"] {
+    display: inline-flex !important;
+    width: auto;
+    min-width: 9rem;
+    margin: 0;
+}
+
+/* ——— Totales ——— */
+.misaki-cart .cart_totals h2 {
+    margin: 0 0 1rem;
+    color: var(--misaki-gold);
+    font-family: var(--misaki-title-font);
+    font-size: 1.125rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.misaki-cart .cart_totals table.shop_table th {
+    width: 50%;
+}
+
+.misaki-cart .cart_totals .order-total th,
+.misaki-cart .cart_totals .order-total td {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.misaki-cart .wc-proceed-to-checkout {
+    margin-top: 1.25rem;
+    padding: 0;
+    clear: both;
+}
+
+.misaki-cart .wc-proceed-to-checkout .checkout-button {
+    display: flex !important;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0 !important;
+    padding: 0.85rem 1rem !important;
+    font-size: 0.75rem !important;
+}
+
+/* ——— Carrito vacío ——— */
+.misaki-cart__empty {
+    max-width: min(100%, 28rem);
+    margin-inline: auto;
+    text-align: center;
+}
+
+.misaki-cart__empty .cart-empty,
+.misaki-cart__empty .woocommerce-info {
+    margin: 0 0 1.25rem;
+    font-size: 0.9375rem;
+    font-weight: 300;
+    line-height: 1.7;
+}
+
+.misaki-cart__empty .return-to-shop {
+    margin: 0;
+}
+
+/* ——— Botones ——— */
+.misaki-cart .button,
+.misaki-cart button[type="submit"],
+.misaki-cart a.button,
+.misaki-cart .checkout-button {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0.65rem 1.25rem !important;
+    border: 1px solid #000 !important;
+    border-radius: 0.5rem !important;
+    background: #000 !important;
+    background-color: #000 !important;
+    color: #fff !important;
+    box-shadow: none !important;
+    font-family: var(--misaki-title-font) !important;
+    font-size: 0.75rem !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.08em !important;
+    line-height: 1.2 !important;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.misaki-cart .button:hover,
+.misaki-cart .button:focus-visible,
+.misaki-cart button[type="submit"]:hover,
+.misaki-cart button[type="submit"]:focus-visible,
+.misaki-cart a.button:hover,
+.misaki-cart a.button:focus-visible,
+.misaki-cart .checkout-button:hover,
+.misaki-cart .checkout-button:focus-visible {
+    background: #222 !important;
+    background-color: #222 !important;
+    border-color: #222 !important;
+    color: #fff !important;
+    outline: none;
+}
+
+.misaki-cart .button:disabled,
+.misaki-cart .button.disabled,
+.misaki-cart button[name="update_cart"]:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+@media (max-width: 47.99rem) {
+    .misaki-cart .woocommerce-cart-form__contents {
+        table-layout: auto;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+    }
+
+    .misaki-cart .woocommerce-cart-form__contents .product-remove,
+    .misaki-cart .woocommerce-cart-form__contents .product-thumbnail,
+    .misaki-cart .woocommerce-cart-form__contents .product-name,
+    .misaki-cart .woocommerce-cart-form__contents .product-price,
+    .misaki-cart .woocommerce-cart-form__contents .product-quantity,
+    .misaki-cart .woocommerce-cart-form__contents .product-subtotal {
+        width: 100% !important;
+        max-width: 100%;
+    }
+
+    .misaki-cart table.shop_table_responsive thead {
+        display: none;
+    }
+
+    .misaki-cart table.shop_table_responsive tbody tr:nth-child(2n) td,
+    .misaki-cart table.shop_table_responsive tbody tr:nth-child(odd) td {
+        background-color: transparent;
+    }
+
+    .misaki-cart table.shop_table_responsive tbody tr.cart_item {
+        display: block;
+        position: relative;
+        margin-bottom: 1rem;
+        padding: 0.25rem 0 0;
+        border: 1px solid rgba(200, 168, 90, 0.22);
+        border-radius: 0.75rem;
+        background: #fff;
+        overflow: hidden;
+    }
+
+    .misaki-cart table.shop_table_responsive tbody tr.cart_item:last-child {
+        margin-bottom: 0;
+    }
+
+    .misaki-cart table.shop_table_responsive tbody tr.cart_item td {
+        display: grid;
+        grid-template-columns: minmax(6.5rem, 38%) minmax(0, 1fr);
+        gap: 0.65rem 1rem;
+        align-items: center;
+        width: 100% !important;
+        padding: 0.85rem 1rem;
+        border-bottom: 1px solid rgba(200, 168, 90, 0.14);
+        text-align: left !important;
+        box-sizing: border-box;
+    }
+
+    .misaki-cart table.shop_table_responsive tbody tr.cart_item td:last-child {
+        border-bottom: 0;
+    }
+
+    .misaki-cart table.shop_table_responsive tbody tr.cart_item td::before {
+        content: attr(data-title);
+        float: none;
+        display: block;
+        margin: 0;
+        padding: 0.35rem 0.5rem;
+        border-radius: 0.35rem;
+        background: rgba(200, 168, 90, 0.14);
+        color: var(--misaki-gold);
+        font-family: var(--misaki-title-font);
+        font-size: 0.625rem;
+        font-weight: 300;
+        letter-spacing: 0.08em;
+        line-height: 1.3;
+        text-transform: uppercase;
+    }
+
+    .misaki-cart table.shop_table_responsive tbody tr.cart_item td > * {
+        justify-self: end;
+        text-align: right;
+    }
+
+    .misaki-cart table.shop_table_responsive .product-remove {
+        position: absolute;
+        top: 0.65rem;
+        right: 0.65rem;
+        z-index: 1;
+        display: block;
+        width: auto !important;
+        padding: 0;
+        border: 0;
+        background: transparent;
+    }
+
+    .misaki-cart table.shop_table_responsive .product-remove::before {
+        display: none;
+    }
+
+    .misaki-cart table.shop_table_responsive .product-thumbnail {
+        display: block;
+        padding: 1rem 1rem 0.5rem;
+        padding-right: 3rem;
+        border-bottom: 1px solid rgba(200, 168, 90, 0.14);
+    }
+
+    .misaki-cart table.shop_table_responsive .product-thumbnail::before {
+        display: none;
+    }
+
+    .misaki-cart table.shop_table_responsive .product-thumbnail > * {
+        justify-self: start;
+        text-align: left;
+    }
+
+    .misaki-cart table.shop_table_responsive .product-thumbnail img {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+
+    .misaki-cart table.shop_table_responsive .product-name {
+        display: block;
+        padding: 0.5rem 3rem 0.85rem 1rem;
+        border-bottom: 1px solid rgba(200, 168, 90, 0.14);
+    }
+
+    .misaki-cart table.shop_table_responsive .product-name::before {
+        display: none;
+    }
+
+    .misaki-cart table.shop_table_responsive .product-name a {
+        display: block;
+        font-size: 0.9375rem;
+        line-height: 1.4;
+        text-align: left;
+    }
+
+    .misaki-cart table.shop_table_responsive .product-name .variation,
+    .misaki-cart table.shop_table_responsive .product-name dl {
+        text-align: left;
+    }
+
+    .misaki-cart table.shop_table_responsive .product-price,
+    .misaki-cart table.shop_table_responsive .product-quantity,
+    .misaki-cart table.shop_table_responsive .product-subtotal {
+        white-space: normal;
+    }
+
+    .misaki-cart table.shop_table_responsive .product-subtotal {
+        font-weight: 600;
+    }
+
+    .misaki-cart table.shop_table_responsive tr:not(.cart_item) {
+        display: block;
+        margin-top: 1rem;
+        border: 1px solid rgba(200, 168, 90, 0.18);
+        border-radius: 0.75rem;
+        overflow: hidden;
+        background: rgba(200, 168, 90, 0.06);
+    }
+
+    .misaki-cart table.shop_table_responsive tr:not(.cart_item) td.actions {
+        display: block;
+        width: 100% !important;
+        padding: 1rem;
+        border: 0;
+        text-align: left !important;
+    }
+
+    .misaki-cart table.shop_table_responsive tr:not(.cart_item) td.actions::before {
+        display: none;
+    }
+
+    .misaki-cart .actions .coupon {
+        grid-template-columns: 1fr;
+    }
+
+    .misaki-cart .coupon .button,
+    .misaki-cart .actions > .button[name="update_cart"] {
+        width: 100%;
+    }
+
+    .misaki-cart__inner {
+        padding-inline: 1rem;
+    }
+
+    .misaki-cart__panel {
+        padding: 1.25rem 1rem;
+    }
+}
+
+@media (min-width: 48rem) {
+    .misaki-cart__inner {
+        padding-inline: 2rem;
+        padding-bottom: 5rem;
+    }
+
+    .misaki-cart__grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 20rem);
+        gap: 1.5rem;
+        align-items: start;
+    }
+
+    .misaki-cart__panel {
+        padding: 1.75rem 1.5rem;
+    }
+
+    .misaki-cart .product-thumbnail img {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+}
+
+@media (min-width: 48rem) and (max-width: 56rem) {
+    .misaki-cart .woocommerce-cart-form__contents .product-thumbnail,
+    .misaki-cart .woocommerce-cart-form__contents thead .product-thumbnail {
+        display: none;
+    }
+
+    .misaki-cart .woocommerce-cart-form__contents .product-name {
+        width: 46%;
+    }
+
+    .misaki-cart .woocommerce-cart-form__contents .product-subtotal {
+        width: 18%;
+    }
+}
+
+@media (min-width: 64rem) {
+    .misaki-cart__grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+    }
+
+    .misaki-cart .woocommerce-cart-form__contents .product-name {
+        width: 44%;
+    }
+}
