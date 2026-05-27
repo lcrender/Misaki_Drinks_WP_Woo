@@ -44,6 +44,15 @@ La imagen `wordpress` no incluye el binario `wp`, por eso este proyecto usa el s
   docker compose run --rm wpcli plugin list
   ```
 
+## Producción (Traefik)
+
+Ver [DEPLOY.md](DEPLOY.md) para desplegar en `/opt/misakidrinks` con `docker-compose.prod.yml`.
+
+```bash
+cp .env.production.example .env   # en el servidor
+docker compose -f docker-compose.prod.yml up -d
+```
+
 ## Detener entorno
 
 ```bash

@@ -1,0 +1,130 @@
+# ========================================
+# Misaki Drinks - Docker Compose PRODUCCIÓN
+# ========================================
+# Servidor: /opt/misakidrinks
+# Traefik existente | certresolver: mytlschallenge | red: root_default
+# Sin puertos expuestos al host.
+#
+# Dominio: misakidrinks.com
+# DNS (Cloudflare proxy naranja): registros A → IP del VPS.
+# SSL/TLS en Cloudflare: "Full" o "Full (strict)".
+#
+# Subdominios:
+#   misakidrinks.com      → WordPress (canónico)
+#   www.misakidrinks.com  → redirect 301 a https://misakidrinks.com
+#
+# Uso:
+#   cp .env.production.example .env   # editar secretos en el servidor
+#   docker compose -f docker-compose.prod.yml up -d
+# ========================================
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: misakidrinks_db
+    restart: always
+    env_file:
+      - .env
+    environment:
+      MYSQL_DATABASE: ${WORDPRESS_DB_NAME}
+      MYSQL_USER: ${WORDPRESS_DB_USER}
+      MYSQL_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    command:
+      - --default-authentication-plugin=mysql_native_password
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p${MYSQL_ROOT_PASSWORD}"]
+      timeout: 5s
+      interval: 10s
+      retries: 10
+    networks:
+      - root_default
+
+  wordpress:
+    image: wordpress:6-apache
+    container_name: misakidrinks_wp
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_HOME', '${WP_HOME}');
+        define('WP_SITEURL', '${WP_SITEURL}');
+        define('FORCE_SSL_ADMIN', true);
+    volumes:
+      - ./:/var/www/html
+    networks:
+      - root_default
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=root_default"
+      - "traefik.http.services.misakidrinks-front.loadbalancer.server.port=80"
+      # HTTPS canónico: solo apex (sin www)
+      - "traefik.http.routers.misakidrinks-front.rule=Host(`misakidrinks.com`)"
+      - "traefik.http.routers.misakidrinks-front.entrypoints=websecure"
+      - "traefik.http.routers.misakidrinks-front.tls=true"
+      - "traefik.http.routers.misakidrinks-front.tls.certresolver=mytlschallenge"
+      - "traefik.http.routers.misakidrinks-front.service=misakidrinks-front"
+      # HTTPS www → 301 a https://misakidrinks.com
+      - "traefik.http.routers.misakidrinks-front-www.rule=Host(`www.misakidrinks.com`)"
+      - "traefik.http.routers.misakidrinks-front-www.entrypoints=websecure"
+      - "traefik.http.routers.misakidrinks-front-www.tls=true"
+      - "traefik.http.routers.misakidrinks-front-www.tls.certresolver=mytlschallenge"
+      - "traefik.http.routers.misakidrinks-front-www.middlewares=misakidrinks-front-www-to-apex"
+      - "traefik.http.routers.misakidrinks-front-www.service=noop@internal"
+      - "traefik.http.middlewares.misakidrinks-front-www-to-apex.redirectregex.regex=^https?://www\\.misakidrinks\\.com(.*)$$"
+      - "traefik.http.middlewares.misakidrinks-front-www-to-apex.redirectregex.replacement=https://misakidrinks.com$$1"
+      - "traefik.http.middlewares.misakidrinks-front-www-to-apex.redirectregex.permanent=true"
+      # HTTP apex → HTTPS apex
+      - "traefik.http.routers.misakidrinks-front-http.rule=Host(`misakidrinks.com`)"
+      - "traefik.http.routers.misakidrinks-front-http.entrypoints=web"
+      - "traefik.http.routers.misakidrinks-front-http.middlewares=misakidrinks-front-http-to-https"
+      - "traefik.http.routers.misakidrinks-front-http.service=misakidrinks-front"
+      - "traefik.http.middlewares.misakidrinks-front-http-to-https.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.misakidrinks-front-http-to-https.redirectscheme.permanent=true"
+      # HTTP www → HTTPS apex
+      - "traefik.http.routers.misakidrinks-front-http-www.rule=Host(`www.misakidrinks.com`)"
+      - "traefik.http.routers.misakidrinks-front-http-www.entrypoints=web"
+      - "traefik.http.routers.misakidrinks-front-http-www.middlewares=misakidrinks-front-http-www-to-apex"
+      - "traefik.http.routers.misakidrinks-front-http-www.service=noop@internal"
+      - "traefik.http.middlewares.misakidrinks-front-http-www-to-apex.redirectregex.regex=^https?://www\\.misakidrinks\\.com(.*)$$"
+      - "traefik.http.middlewares.misakidrinks-front-http-www-to-apex.redirectregex.replacement=https://misakidrinks.com$$1"
+      - "traefik.http.middlewares.misakidrinks-front-http-www-to-apex.redirectregex.permanent=true"
+
+  wpcli:
+    image: wordpress:cli
+    container_name: misakidrinks_wpcli
+    profiles: ["tools"]
+    depends_on:
+      db:
+        condition: service_healthy
+      wordpress:
+        condition: service_started
+    env_file:
+      - .env
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+    volumes:
+      - ./:/var/www/html
+    working_dir: /var/www/html
+    networks:
+      - root_default
+
+volumes:
+  db_data:
+
+networks:
+  root_default:
+    external: true

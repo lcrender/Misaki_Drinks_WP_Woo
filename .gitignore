@@ -3,8 +3,8 @@
 docker/mysql/
 
 # WordPress runtime (no versionar en repo)
-wp-content/uploads/
 wp-content/cache/
+backups/*.sql
 wp-content/upgrade/
 wp-content/backup-db/
 wp-content/backups/
