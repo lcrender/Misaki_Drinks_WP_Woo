@@ -40,7 +40,16 @@ Variables obligatorias:
 
 - `WORDPRESS_DB_*` y `MYSQL_ROOT_PASSWORD` — contraseñas fuertes y únicas
 - `WP_HOME` / `WP_SITEURL` — `https://misakidrinks.com`
+- `TRAEFIK_BASIC_AUTH_USERS` — acceso temporal al sitio (Basic Auth)
 - Salts de WordPress — generar en https://api.wordpress.org/secret-key/1.1/salt/
+
+Para `TRAEFIK_BASIC_AUTH_USERS`:
+
+```bash
+htpasswd -nbB cliente 'TuPasswordTemporalFuerte'
+```
+
+Copiar salida en `.env` y escapar `$` como `$$`.
 
 ## 3. Exportar datos desde local
 
