@@ -62,6 +62,7 @@ services:
         define('FORCE_SSL_ADMIN', true);
     volumes:
       - ./:/var/www/html
+      - ./docker/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     networks:
       - root_default
     labels:

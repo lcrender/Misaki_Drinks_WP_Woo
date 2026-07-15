@@ -12,6 +12,11 @@ function misaki_woo_home_hero_bg_filename(): string
     return 'background.jpg';
 }
 
+function misaki_woo_home_hero_video_path(): string
+{
+    return '2026/07/misaki-intro.mp4';
+}
+
 function misaki_woo_home_hero_brand_filename(): string
 {
     return 'misaki-big.png';

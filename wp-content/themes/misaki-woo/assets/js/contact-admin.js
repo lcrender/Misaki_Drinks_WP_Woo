@@ -60,17 +60,6 @@
             .replace(/#1000/g, '#' + (index + 1));
     }
 
-    $('#misaki-contact-add-team').on('click', function (event) {
-        event.preventDefault();
-
-        const $list = $('#misaki-contact-team-list');
-        const $template = $('#misaki-contact-team-template');
-        const index = nextIndex($list, '.misaki-contact-team-row');
-        const html = replaceIndexTokens($template.html(), index);
-
-        $list.append(html);
-    });
-
     $('#misaki-contact-add-country').on('click', function (event) {
         event.preventDefault();
 
@@ -84,6 +73,6 @@
 
     $(document).on('click', '.misaki-contact-remove-row', function (event) {
         event.preventDefault();
-        $(this).closest('.misaki-contact-team-row, .misaki-contact-country-row').remove();
+        $(this).closest('.misaki-contact-country-row').remove();
     });
 })(jQuery);

@@ -9,6 +9,7 @@ if (!defined('ABSPATH')) {
 
 require_once get_template_directory() . '/inc/services-admin.php';
 require_once get_template_directory() . '/inc/contact-admin.php';
+require_once get_template_directory() . '/inc/contact-form.php';
 require_once get_template_directory() . '/inc/home-admin.php';
 require_once get_template_directory() . '/inc/product-gallery.php';
 require_once get_template_directory() . '/inc/shop.php';
@@ -165,11 +166,11 @@ add_action('wp_enqueue_scripts', function () {
             file_exists($contact_css) ? (string) filemtime($contact_css) : null
         );
 
-        $distributors_bg = esc_url(misaki_woo_get_contact_distributors_bg_url());
+        $section_bg = esc_url(misaki_woo_get_contact_distributors_bg_url());
 
         wp_add_inline_style(
             'misaki-woo-contact',
-            ".contact-section--distributors{background-image:url('{$distributors_bg}');}"
+            ".contact-section--intro{background-image:url('{$section_bg}');}"
         );
     }
 

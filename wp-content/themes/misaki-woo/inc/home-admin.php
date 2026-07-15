@@ -11,7 +11,8 @@ require_once get_template_directory() . '/inc/home-data.php';
 
 const MISAKI_HOME_PAGE_OPTION         = 'misaki_home_page_id';
 const MISAKI_HOME_META_HERO_BG        = '_misaki_home_hero_bg_id';
-const MISAKI_HOME_META_HERO_BRAND     = '_misaki_home_hero_brand_id';
+const MISAKI_HOME_META_HERO_VIDEO     = '_misaki_home_hero_video_id';
+const MISAKI_HOME_META_HERO_TYPE      = '_misaki_home_hero_type';
 const MISAKI_HOME_META_PRODUCTS_TITLE = '_misaki_home_products_title';
 const MISAKI_HOME_META_PRODUCTS_INTRO = '_misaki_home_products_intro';
 const MISAKI_HOME_META_PRODUCTS       = '_misaki_home_products';
@@ -115,6 +116,19 @@ function misaki_woo_home_image_url(int $attachment_id, string $fallback_filename
     return misaki_woo_get_upload_asset_url($fallback_filename);
 }
 
+function misaki_woo_home_attachment_url(int $attachment_id, string $fallback_path): string
+{
+    if ($attachment_id > 0) {
+        $url = wp_get_attachment_url($attachment_id);
+
+        if ($url) {
+            return $url;
+        }
+    }
+
+    return content_url('uploads/' . ltrim($fallback_path, '/'));
+}
+
 function misaki_woo_get_home_hero_bg_url(?int $page_id = null): string
 {
     $page_id = $page_id ?: misaki_woo_get_home_page_id();
@@ -129,18 +143,31 @@ function misaki_woo_get_home_hero_bg_url(?int $page_id = null): string
     );
 }
 
-function misaki_woo_get_home_hero_brand_url(?int $page_id = null): string
+function misaki_woo_get_home_hero_video_url(?int $page_id = null): string
 {
     $page_id = $page_id ?: misaki_woo_get_home_page_id();
 
     if (!$page_id) {
-        return misaki_woo_get_upload_asset_url(misaki_woo_home_hero_brand_filename());
+        return misaki_woo_home_attachment_url(0, misaki_woo_home_hero_video_path());
     }
 
-    return misaki_woo_home_image_url(
-        (int) get_post_meta($page_id, MISAKI_HOME_META_HERO_BRAND, true),
-        misaki_woo_home_hero_brand_filename()
+    return misaki_woo_home_attachment_url(
+        (int) get_post_meta($page_id, MISAKI_HOME_META_HERO_VIDEO, true),
+        misaki_woo_home_hero_video_path()
     );
+}
+
+function misaki_woo_get_home_hero_media_type(?int $page_id = null): string
+{
+    $page_id = $page_id ?: misaki_woo_get_home_page_id();
+
+    if (!$page_id) {
+        return 'video';
+    }
+
+    $type = sanitize_key((string) get_post_meta($page_id, MISAKI_HOME_META_HERO_TYPE, true));
+
+    return in_array($type, ['video', 'image'], true) ? $type : 'video';
 }
 
 function misaki_woo_get_home_products_title(?int $page_id = null): string
@@ -460,6 +487,75 @@ function misaki_woo_home_render_media_field(string $label, string $input_id, str
     <?php
 }
 
+function misaki_woo_home_render_video_field(string $label, string $input_id, string $preview_id, int $attachment_id): void
+{
+    $preview = $attachment_id ? wp_get_attachment_url($attachment_id) : '';
+    ?>
+    <div class="misaki-page-media-field">
+        <label><strong><?php echo esc_html($label); ?></strong></label>
+        <input type="hidden" id="<?php echo esc_attr($input_id); ?>" name="<?php echo esc_attr($input_id); ?>" value="<?php echo esc_attr((string) $attachment_id); ?>">
+        <p class="misaki-page-media-field__preview" id="<?php echo esc_attr($preview_id); ?>">
+            <?php if ($preview) : ?>
+                <video src="<?php echo esc_url($preview); ?>" controls muted playsinline style="max-width:240px;height:auto;"></video>
+            <?php endif; ?>
+        </p>
+        <p>
+            <button type="button" class="button misaki-page-media-select misaki-page-media-select--video" data-target="<?php echo esc_attr($input_id); ?>" data-preview="<?php echo esc_attr($preview_id); ?>">
+                <?php esc_html_e('Elegir video', 'misaki-woo'); ?>
+            </button>
+            <button type="button" class="button misaki-page-media-remove" data-target="<?php echo esc_attr($input_id); ?>" data-preview="<?php echo esc_attr($preview_id); ?>">
+                <?php esc_html_e('Quitar', 'misaki-woo'); ?>
+            </button>
+        </p>
+    </div>
+    <?php
+}
+
+function misaki_woo_home_render_hero_fields(int $page_id): void
+{
+    $hero_type      = misaki_woo_get_home_hero_media_type($page_id);
+    $hero_video_id  = (int) get_post_meta($page_id, MISAKI_HOME_META_HERO_VIDEO, true);
+    $hero_image_id  = (int) get_post_meta($page_id, MISAKI_HOME_META_HERO_BG, true);
+    ?>
+    <fieldset class="misaki-home-hero-settings" style="margin:0 0 1.25rem;padding:1rem 1.25rem;border:1px solid #dcdcde;border-radius:4px;">
+        <legend><strong><?php esc_html_e('Primera sección (fondo)', 'misaki-woo'); ?></strong></legend>
+        <p>
+            <span class="description"><?php esc_html_e('Elegí si querés mostrar un video o una imagen a ancho completo.', 'misaki-woo'); ?></span>
+        </p>
+        <p>
+            <label style="margin-right:1rem;">
+                <input type="radio" name="misaki_home_hero_type" value="video" <?php checked($hero_type, 'video'); ?>>
+                <?php esc_html_e('Video', 'misaki-woo'); ?>
+            </label>
+            <label>
+                <input type="radio" name="misaki_home_hero_type" value="image" <?php checked($hero_type, 'image'); ?>>
+                <?php esc_html_e('Imagen', 'misaki-woo'); ?>
+            </label>
+        </p>
+        <div class="misaki-home-hero-panel misaki-home-hero-panel--video" <?php echo $hero_type === 'image' ? 'hidden' : ''; ?>>
+            <?php
+            misaki_woo_home_render_video_field(
+                __('Video', 'misaki-woo'),
+                'misaki_home_hero_video_id',
+                'misaki_home_hero_video_preview',
+                $hero_video_id
+            );
+            ?>
+        </div>
+        <div class="misaki-home-hero-panel misaki-home-hero-panel--image" <?php echo $hero_type === 'video' ? 'hidden' : ''; ?>>
+            <?php
+            misaki_woo_home_render_media_field(
+                __('Imagen', 'misaki-woo'),
+                'misaki_home_hero_bg_id',
+                'misaki_home_hero_bg_preview',
+                $hero_image_id
+            );
+            ?>
+        </div>
+    </fieldset>
+    <?php
+}
+
 function misaki_woo_home_render_product_row(int $index, array $product): void
 {
     $attachment_id = (int) ($product['attachment_id'] ?? 0);
@@ -523,20 +619,7 @@ function misaki_woo_home_render_fields(WP_Post $post): void
     </p>
 
     <h2 class="misaki-home-admin-heading"><?php esc_html_e('Hero', 'misaki-woo'); ?></h2>
-    <?php
-    misaki_woo_home_render_media_field(
-        __('Imagen de fondo', 'misaki-woo'),
-        'misaki_home_hero_bg_id',
-        'misaki_home_hero_bg_preview',
-        (int) get_post_meta($page_id, MISAKI_HOME_META_HERO_BG, true)
-    );
-    misaki_woo_home_render_media_field(
-        __('Logo / imagen central', 'misaki-woo'),
-        'misaki_home_hero_brand_id',
-        'misaki_home_hero_brand_preview',
-        (int) get_post_meta($page_id, MISAKI_HOME_META_HERO_BRAND, true)
-    );
-    ?>
+    <?php misaki_woo_home_render_hero_fields($page_id); ?>
 
     <h2 class="misaki-home-admin-heading"><?php esc_html_e('Our Products', 'misaki-woo'); ?></h2>
     <p>
@@ -673,8 +756,15 @@ function misaki_woo_home_save_meta(int $post_id): void
         return;
     }
 
+    $hero_type = isset($_POST['misaki_home_hero_type']) ? sanitize_key(wp_unslash($_POST['misaki_home_hero_type'])) : 'video';
+
+    if (!in_array($hero_type, ['video', 'image'], true)) {
+        $hero_type = 'video';
+    }
+
+    update_post_meta($post_id, MISAKI_HOME_META_HERO_TYPE, $hero_type);
+    update_post_meta($post_id, MISAKI_HOME_META_HERO_VIDEO, isset($_POST['misaki_home_hero_video_id']) ? absint($_POST['misaki_home_hero_video_id']) : 0);
     update_post_meta($post_id, MISAKI_HOME_META_HERO_BG, isset($_POST['misaki_home_hero_bg_id']) ? absint($_POST['misaki_home_hero_bg_id']) : 0);
-    update_post_meta($post_id, MISAKI_HOME_META_HERO_BRAND, isset($_POST['misaki_home_hero_brand_id']) ? absint($_POST['misaki_home_hero_brand_id']) : 0);
     update_post_meta($post_id, MISAKI_HOME_META_PRODUCTS_TITLE, isset($_POST['misaki_home_products_title']) ? sanitize_text_field(wp_unslash($_POST['misaki_home_products_title'])) : '');
     update_post_meta($post_id, MISAKI_HOME_META_PRODUCTS_INTRO, isset($_POST['misaki_home_products_intro']) ? sanitize_textarea_field(wp_unslash($_POST['misaki_home_products_intro'])) : '');
     update_post_meta($post_id, MISAKI_HOME_META_WE_ARE_TITLE, isset($_POST['misaki_home_we_are_title']) ? sanitize_text_field(wp_unslash($_POST['misaki_home_we_are_title'])) : '');

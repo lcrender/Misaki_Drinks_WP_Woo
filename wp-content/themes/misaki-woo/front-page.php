@@ -15,23 +15,36 @@ $page_id           = misaki_woo_get_home_page_id();
 $we_are_bg_url          = esc_url(misaki_woo_get_home_we_are_bg_url($page_id));
 $we_are_panel_id        = misaki_woo_get_home_we_are_panel_attachment_id($page_id);
 $we_are_panel_alt       = esc_attr(misaki_woo_get_home_we_are_title($page_id));
-$hero_bg_url       = esc_url(misaki_woo_get_home_hero_bg_url($page_id));
-$hero_brand_url    = esc_url(misaki_woo_get_home_hero_brand_url($page_id));
+$hero_type         = misaki_woo_get_home_hero_media_type($page_id);
+$hero_video_url    = esc_url(misaki_woo_get_home_hero_video_url($page_id));
+$hero_image_url    = esc_url(misaki_woo_get_home_hero_bg_url($page_id));
 $values_jump_links = misaki_woo_get_home_values_jump_links($page_id);
 ?>
 <main id="site-main" class="home-main" tabindex="-1">
     <section class="home-hero" aria-label="<?php esc_attr_e('Inicio Misaki Drinks', 'misaki-woo'); ?>">
-        <div
-            class="home-hero__background"
-            style="background-image: url('<?php echo $hero_bg_url; ?>');"
-            aria-hidden="true"
-        ></div>
-        <div class="home-hero__content">
-            <img
-                class="home-hero__brand"
-                src="<?php echo $hero_brand_url; ?>"
-                alt="<?php echo esc_attr(get_bloginfo('name') ?: 'Misaki Drinks'); ?>"
-            >
+        <div class="home-hero__media" aria-hidden="true">
+            <?php if ($hero_type === 'image') : ?>
+                <img
+                    class="home-hero__image"
+                    src="<?php echo $hero_image_url; ?>"
+                    alt="<?php echo esc_attr(get_bloginfo('name') ?: 'Misaki Drinks'); ?>"
+                    width="1920"
+                    height="1080"
+                    decoding="async"
+                >
+            <?php else : ?>
+                <video
+                    class="home-hero__video"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="auto"
+                >
+                    <source src="<?php echo $hero_video_url; ?>" type="video/mp4">
+                </video>
+            <?php endif; ?>
+            <div class="home-hero__overlay"></div>
         </div>
     </section>
 

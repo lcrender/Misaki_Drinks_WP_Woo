@@ -39,6 +39,35 @@ function misaki_woo_get_contact_intro_lead_default(): string
 }
 
 /**
+ * @return array<int, array{flag: string, text: string}>
+ */
+function misaki_woo_get_contact_addresses_defaults(): array
+{
+    return [
+        [
+            'flag' => '🇪🇸',
+            'text' => 'C/Barranc del marx, 19. CP 03750 Pedreguer, Alicante, Spain.',
+        ],
+        [
+            'flag' => '🇳🇱',
+            'text' => '',
+        ],
+    ];
+}
+
+/**
+ * @return array{email: string, phone: string, addresses: array<int, array{flag: string, text: string}>}
+ */
+function misaki_woo_get_contact_details_defaults(): array
+{
+    return [
+        'email'     => 'info@misakidrinks.com',
+        'phone'     => '+31 6 40277275',
+        'addresses' => misaki_woo_get_contact_addresses_defaults(),
+    ];
+}
+
+/**
  * @return array<int, array{name: string, role: string, role_ja: string, phone: string, email: string}>
  */
 function misaki_woo_get_contact_team_defaults(): array

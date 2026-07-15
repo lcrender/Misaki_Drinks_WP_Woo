@@ -12,6 +12,10 @@ require_once get_template_directory() . '/inc/contact-data.php';
 const MISAKI_CONTACT_PAGE_OPTION           = 'misaki_contact_page_id';
 const MISAKI_CONTACT_META_INTRO_TITLE      = '_misaki_contact_intro_title';
 const MISAKI_CONTACT_META_INTRO_LEAD       = '_misaki_contact_intro_lead';
+const MISAKI_CONTACT_META_EMAIL            = '_misaki_contact_email';
+const MISAKI_CONTACT_META_PHONE            = '_misaki_contact_phone';
+const MISAKI_CONTACT_META_ADDRESSES        = '_misaki_contact_addresses';
+const MISAKI_CONTACT_META_ADDRESS          = '_misaki_contact_address';
 const MISAKI_CONTACT_META_INSTAGRAM_URL    = '_misaki_contact_instagram_url';
 const MISAKI_CONTACT_META_INSTAGRAM_HANDLE = '_misaki_contact_instagram_handle';
 const MISAKI_CONTACT_META_INTRO_IMAGE      = '_misaki_contact_intro_image_id';
@@ -150,6 +154,86 @@ function misaki_woo_get_contact_intro_lead(?int $page_id = null): string
     $value = trim((string) get_post_meta($page_id, MISAKI_CONTACT_META_INTRO_LEAD, true));
 
     return $value !== '' ? $value : $default;
+}
+
+/**
+ * @return array{email: string, phone: string, addresses: array<int, array{flag: string, text: string}>}
+ */
+function misaki_woo_get_contact_details(?int $page_id = null): array
+{
+    $defaults = misaki_woo_get_contact_details_defaults();
+    $page_id  = $page_id ?: misaki_woo_get_contact_page_id();
+
+    if (!$page_id) {
+        return $defaults;
+    }
+
+    $email = trim((string) get_post_meta($page_id, MISAKI_CONTACT_META_EMAIL, true));
+    $phone = trim((string) get_post_meta($page_id, MISAKI_CONTACT_META_PHONE, true));
+    $saved = misaki_woo_contact_decode_json_array(get_post_meta($page_id, MISAKI_CONTACT_META_ADDRESSES, true));
+
+    if ($saved === []) {
+        $legacy = (string) get_post_meta($page_id, MISAKI_CONTACT_META_ADDRESS, true);
+
+        if (trim($legacy) !== '') {
+            $saved = [
+                [
+                    'flag' => '🇪🇸',
+                    'text' => implode(', ', misaki_woo_contact_split_address_lines($legacy)),
+                ],
+            ];
+        }
+    }
+
+    return [
+        'email'     => $email !== '' ? $email : $defaults['email'],
+        'phone'     => $phone !== '' ? $phone : $defaults['phone'],
+        'addresses' => misaki_woo_normalize_contact_addresses($saved),
+    ];
+}
+
+/**
+ * @param array<int, mixed> $saved
+ * @return array<int, array{flag: string, text: string}>
+ */
+function misaki_woo_normalize_contact_addresses(array $saved): array
+{
+    $defaults    = misaki_woo_get_contact_addresses_defaults();
+    $normalized  = [];
+    $saved_count = count($saved);
+    $total       = max(count($defaults), $saved_count);
+
+    for ($index = 0; $index < $total; $index++) {
+        $default = $defaults[$index] ?? ['flag' => '', 'text' => ''];
+        $row     = is_array($saved[$index] ?? null) ? $saved[$index] : [];
+        $flag    = trim((string) ($row['flag'] ?? ''));
+        $text    = trim((string) ($row['text'] ?? ''));
+
+        $normalized[] = [
+            'flag' => $flag !== '' ? $flag : (string) $default['flag'],
+            'text' => array_key_exists('text', $row) ? $text : (string) $default['text'],
+        ];
+    }
+
+    return $normalized !== [] ? $normalized : $defaults;
+}
+
+/**
+ * @return string[]
+ */
+function misaki_woo_contact_split_address_lines(string $raw): array
+{
+    $lines = [];
+
+    foreach (preg_split('/\r\n|\r|\n/', $raw) ?: [] as $line) {
+        $line = trim($line);
+
+        if ($line !== '') {
+            $lines[] = $line;
+        }
+    }
+
+    return $lines;
 }
 
 /**
@@ -509,15 +593,7 @@ function misaki_woo_contact_render_fields(WP_Post $post): void
     $intro_image_id  = (int) get_post_meta($page_id, MISAKI_CONTACT_META_INTRO_IMAGE, true);
     $dist_bg_id      = (int) get_post_meta($page_id, MISAKI_CONTACT_META_DIST_BG, true);
     $instagram       = misaki_woo_get_contact_instagram($page_id);
-    $company         = misaki_woo_get_contact_company($page_id);
-    $team            = misaki_woo_get_contact_team($page_id);
-    $distributors    = misaki_woo_get_distributors($page_id);
-    $company_address = implode("\n", $company['address_lines']);
-    $saved_address   = (string) get_post_meta($page_id, MISAKI_CONTACT_META_COMPANY_ADDRESS, true);
-
-    if ($saved_address !== '') {
-        $company_address = $saved_address;
-    }
+    $contact_details = misaki_woo_get_contact_details($page_id);
     ?>
     <p class="description" style="margin:0 0 1rem;">
         <?php esc_html_e('Editá el contenido visible en /contact/. El editor de WordPress de abajo no se usa en el sitio.', 'misaki-woo'); ?>
@@ -533,6 +609,41 @@ function misaki_woo_contact_render_fields(WP_Post $post): void
         <textarea id="misaki_contact_intro_lead" name="misaki_contact_intro_lead" class="large-text" rows="3"><?php echo esc_textarea(misaki_woo_get_contact_intro_lead($page_id)); ?></textarea>
     </p>
     <p>
+        <label for="misaki_contact_email"><strong><?php esc_html_e('Email', 'misaki-woo'); ?></strong></label><br>
+        <input type="email" id="misaki_contact_email" name="misaki_contact_email" class="large-text" value="<?php echo esc_attr($contact_details['email']); ?>">
+    </p>
+    <p>
+        <label for="misaki_contact_phone"><strong><?php esc_html_e('Teléfono', 'misaki-woo'); ?></strong></label><br>
+        <input type="text" id="misaki_contact_phone" name="misaki_contact_phone" class="regular-text" value="<?php echo esc_attr($contact_details['phone']); ?>">
+    </p>
+    <div class="misaki-contact-admin-addresses">
+        <p><strong><?php esc_html_e('Direcciones', 'misaki-woo'); ?></strong></p>
+        <?php foreach ($contact_details['addresses'] as $index => $address) : ?>
+            <div class="misaki-contact-admin-address" style="margin:0 0 1rem;padding:0.75rem 1rem;border:1px solid #dcdcde;border-radius:4px;">
+                <p style="margin-top:0;">
+                    <label for="misaki_contact_address_flag_<?php echo esc_attr((string) $index); ?>"><strong><?php esc_html_e('Bandera', 'misaki-woo'); ?></strong></label><br>
+                    <input
+                        type="text"
+                        id="misaki_contact_address_flag_<?php echo esc_attr((string) $index); ?>"
+                        name="misaki_contact_addresses[<?php echo esc_attr((string) $index); ?>][flag]"
+                        class="small-text"
+                        value="<?php echo esc_attr($address['flag']); ?>"
+                    >
+                </p>
+                <p style="margin-bottom:0;">
+                    <label for="misaki_contact_address_text_<?php echo esc_attr((string) $index); ?>"><strong><?php esc_html_e('Dirección', 'misaki-woo'); ?></strong></label><br>
+                    <input
+                        type="text"
+                        id="misaki_contact_address_text_<?php echo esc_attr((string) $index); ?>"
+                        name="misaki_contact_addresses[<?php echo esc_attr((string) $index); ?>][text]"
+                        class="large-text"
+                        value="<?php echo esc_attr($address['text']); ?>"
+                    >
+                </p>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <p>
         <label for="misaki_contact_instagram_url"><strong><?php esc_html_e('Instagram URL', 'misaki-woo'); ?></strong></label><br>
         <input type="url" id="misaki_contact_instagram_url" name="misaki_contact_instagram_url" class="large-text" value="<?php echo esc_attr($instagram['url']); ?>">
     </p>
@@ -541,50 +652,7 @@ function misaki_woo_contact_render_fields(WP_Post $post): void
         <input type="text" id="misaki_contact_instagram_handle" name="misaki_contact_instagram_handle" class="regular-text" value="<?php echo esc_attr($instagram['handle']); ?>">
     </p>
     <?php misaki_woo_contact_render_media_field(__('Imagen lateral (Get in touch)', 'misaki-woo'), 'misaki_contact_intro_image_id', 'misaki_contact_intro_preview', $intro_image_id); ?>
-
-    <h2 class="misaki-contact-admin-heading"><?php esc_html_e('Equipo', 'misaki-woo'); ?></h2>
-    <div id="misaki-contact-team-list">
-        <?php foreach ($team as $index => $member) : ?>
-            <?php misaki_woo_contact_render_team_row((int) $index, $member); ?>
-        <?php endforeach; ?>
-    </div>
-    <p><button type="button" class="button" id="misaki-contact-add-team"><?php esc_html_e('Añadir miembro', 'misaki-woo'); ?></button></p>
-
-    <h2 class="misaki-contact-admin-heading"><?php esc_html_e('Empresa', 'misaki-woo'); ?></h2>
-    <p>
-        <label for="misaki_contact_company_name"><strong><?php esc_html_e('Nombre', 'misaki-woo'); ?></strong></label><br>
-        <input type="text" id="misaki_contact_company_name" name="misaki_contact_company_name" class="large-text" value="<?php echo esc_attr($company['name']); ?>">
-    </p>
-    <p>
-        <label for="misaki_contact_company_address"><strong><?php esc_html_e('Dirección', 'misaki-woo'); ?></strong></label><br>
-        <span class="description"><?php esc_html_e('Una línea por renglón.', 'misaki-woo'); ?></span><br>
-        <textarea id="misaki_contact_company_address" name="misaki_contact_company_address" class="large-text" rows="4"><?php echo esc_textarea($company_address); ?></textarea>
-    </p>
-
-    <h2 class="misaki-contact-admin-heading"><?php esc_html_e('Distributors', 'misaki-woo'); ?></h2>
-    <p>
-        <label for="misaki_contact_distributors_title"><strong><?php esc_html_e('Título', 'misaki-woo'); ?></strong></label><br>
-        <input type="text" id="misaki_contact_distributors_title" name="misaki_contact_distributors_title" class="large-text" value="<?php echo esc_attr(misaki_woo_get_contact_distributors_title($page_id)); ?>">
-    </p>
-    <p>
-        <label for="misaki_contact_distributors_lead"><strong><?php esc_html_e('Texto introductorio', 'misaki-woo'); ?></strong></label><br>
-        <textarea id="misaki_contact_distributors_lead" name="misaki_contact_distributors_lead" class="large-text" rows="3"><?php echo esc_textarea(misaki_woo_get_contact_distributors_lead($page_id)); ?></textarea>
-    </p>
-    <?php misaki_woo_contact_render_media_field(__('Imagen de fondo (Distributors)', 'misaki-woo'), 'misaki_contact_distributors_bg_id', 'misaki_contact_distributors_bg_preview', $dist_bg_id); ?>
-
-    <div id="misaki-contact-countries-list">
-        <?php foreach ($distributors as $index => $country) : ?>
-            <?php misaki_woo_contact_render_country_block((int) $index, $country); ?>
-        <?php endforeach; ?>
-    </div>
-    <p><button type="button" class="button" id="misaki-contact-add-country"><?php esc_html_e('Añadir país', 'misaki-woo'); ?></button></p>
-
-    <template id="misaki-contact-team-template">
-        <?php misaki_woo_contact_render_team_row(999, ['name' => '', 'role' => '', 'role_ja' => '', 'phone' => '', 'email' => '']); ?>
-    </template>
-    <template id="misaki-contact-country-template">
-        <?php misaki_woo_contact_render_country_block(999, ['country' => '', 'flag' => '', 'distributors' => []]); ?>
-    </template>
+    <?php misaki_woo_contact_render_media_field(__('Imagen de fondo', 'misaki-woo'), 'misaki_contact_distributors_bg_id', 'misaki_contact_distributors_bg_preview', $dist_bg_id); ?>
     <?php
 }
 
@@ -608,64 +676,36 @@ function misaki_woo_contact_save_meta(int $post_id): void
 
     update_post_meta($post_id, MISAKI_CONTACT_META_INTRO_TITLE, isset($_POST['misaki_contact_intro_title']) ? sanitize_text_field(wp_unslash($_POST['misaki_contact_intro_title'])) : '');
     update_post_meta($post_id, MISAKI_CONTACT_META_INTRO_LEAD, isset($_POST['misaki_contact_intro_lead']) ? sanitize_textarea_field(wp_unslash($_POST['misaki_contact_intro_lead'])) : '');
+    update_post_meta($post_id, MISAKI_CONTACT_META_EMAIL, isset($_POST['misaki_contact_email']) ? sanitize_email(wp_unslash($_POST['misaki_contact_email'])) : '');
+    update_post_meta($post_id, MISAKI_CONTACT_META_PHONE, isset($_POST['misaki_contact_phone']) ? sanitize_text_field(wp_unslash($_POST['misaki_contact_phone'])) : '');
+
+    $addresses = [];
+
+    if (isset($_POST['misaki_contact_addresses']) && is_array($_POST['misaki_contact_addresses'])) {
+        foreach ($_POST['misaki_contact_addresses'] as $row) {
+            if (!is_array($row)) {
+                continue;
+            }
+
+            $flag = sanitize_text_field($row['flag'] ?? '');
+            $text = sanitize_text_field($row['text'] ?? '');
+
+            if ($flag === '' && $text === '') {
+                continue;
+            }
+
+            $addresses[] = [
+                'flag' => $flag,
+                'text' => $text,
+            ];
+        }
+    }
+
+    update_post_meta($post_id, MISAKI_CONTACT_META_ADDRESSES, wp_json_encode(misaki_woo_normalize_contact_addresses($addresses)));
     update_post_meta($post_id, MISAKI_CONTACT_META_INSTAGRAM_URL, isset($_POST['misaki_contact_instagram_url']) ? esc_url_raw(wp_unslash($_POST['misaki_contact_instagram_url'])) : '');
     update_post_meta($post_id, MISAKI_CONTACT_META_INSTAGRAM_HANDLE, isset($_POST['misaki_contact_instagram_handle']) ? sanitize_text_field(wp_unslash($_POST['misaki_contact_instagram_handle'])) : '');
     update_post_meta($post_id, MISAKI_CONTACT_META_INTRO_IMAGE, isset($_POST['misaki_contact_intro_image_id']) ? absint($_POST['misaki_contact_intro_image_id']) : 0);
-    update_post_meta($post_id, MISAKI_CONTACT_META_COMPANY_NAME, isset($_POST['misaki_contact_company_name']) ? sanitize_text_field(wp_unslash($_POST['misaki_contact_company_name'])) : '');
-    update_post_meta($post_id, MISAKI_CONTACT_META_COMPANY_ADDRESS, isset($_POST['misaki_contact_company_address']) ? sanitize_textarea_field(wp_unslash($_POST['misaki_contact_company_address'])) : '');
-    update_post_meta($post_id, MISAKI_CONTACT_META_DIST_TITLE, isset($_POST['misaki_contact_distributors_title']) ? sanitize_text_field(wp_unslash($_POST['misaki_contact_distributors_title'])) : '');
-    update_post_meta($post_id, MISAKI_CONTACT_META_DIST_LEAD, isset($_POST['misaki_contact_distributors_lead']) ? sanitize_textarea_field(wp_unslash($_POST['misaki_contact_distributors_lead'])) : '');
     update_post_meta($post_id, MISAKI_CONTACT_META_DIST_BG, isset($_POST['misaki_contact_distributors_bg_id']) ? absint($_POST['misaki_contact_distributors_bg_id']) : 0);
-
-    $team = [];
-
-    if (isset($_POST['misaki_contact_team']) && is_array($_POST['misaki_contact_team'])) {
-        foreach ($_POST['misaki_contact_team'] as $row) {
-            if (!is_array($row)) {
-                continue;
-            }
-
-            $name = sanitize_text_field($row['name'] ?? '');
-
-            if ($name === '') {
-                continue;
-            }
-
-            $team[] = [
-                'name'    => $name,
-                'role'    => sanitize_text_field($row['role'] ?? ''),
-                'role_ja' => sanitize_text_field($row['role_ja'] ?? ''),
-                'phone'   => sanitize_text_field($row['phone'] ?? ''),
-                'email'   => sanitize_email($row['email'] ?? ''),
-            ];
-        }
-    }
-
-    update_post_meta($post_id, MISAKI_CONTACT_META_TEAM, wp_json_encode($team));
-
-    $countries = [];
-
-    if (isset($_POST['misaki_contact_countries']) && is_array($_POST['misaki_contact_countries'])) {
-        foreach ($_POST['misaki_contact_countries'] as $row) {
-            if (!is_array($row)) {
-                continue;
-            }
-
-            $country = sanitize_text_field($row['country'] ?? '');
-
-            if ($country === '') {
-                continue;
-            }
-
-            $countries[] = [
-                'country'      => $country,
-                'flag'         => sanitize_text_field($row['flag'] ?? ''),
-                'distributors' => misaki_woo_contact_lines_to_distributors((string) ($row['lines'] ?? '')),
-            ];
-        }
-    }
-
-    update_post_meta($post_id, MISAKI_CONTACT_META_DISTRIBUTORS, wp_json_encode($countries));
     update_option(MISAKI_CONTACT_PAGE_OPTION, $post_id);
 }
 
