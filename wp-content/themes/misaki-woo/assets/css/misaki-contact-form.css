@@ -209,20 +209,35 @@
     font-size: 0.75rem;
 }
 
-.misaki-trade-form .wpcf7-response-output {
+.misaki-trade-form .wpcf7-response-output,
+.misaki-trade-form .wpcf7 form .wpcf7-response-output {
     margin: 1rem 0 0;
-    padding: 0.75rem;
-    border: 1px solid rgba(200, 168, 90, 0.35);
-    color: #f6f5f2;
+    padding: 0.85rem 1rem;
+    border: 1px solid rgba(200, 168, 90, 0.45) !important;
+    border-radius: 0;
+    background: #f6f5f2 !important;
+    color: #0a0a0a !important;
     font-size: 0.8125rem;
     line-height: 1.55;
     white-space: pre-line;
 }
 
-.misaki-trade-form .wpcf7-mail-sent-ok,
+/* Éxito / error: texto oscuro sobre fondo claro para contraste legible */
+.misaki-trade-form .wpcf7 form.sent .wpcf7-response-output,
 .misaki-trade-form form.sent .wpcf7-response-output {
-    border-color: rgba(200, 168, 90, 0.55);
-    color: #f6f5f2;
+    background: #f6f5f2 !important;
+    border-color: var(--misaki-gold, #c8a85a) !important;
+    color: #0a0a0a !important;
+}
+
+.misaki-trade-form .wpcf7 form.invalid .wpcf7-response-output,
+.misaki-trade-form .wpcf7 form.unaccepted .wpcf7-response-output,
+.misaki-trade-form .wpcf7 form.failed .wpcf7-response-output,
+.misaki-trade-form .wpcf7 form.aborted .wpcf7-response-output,
+.misaki-trade-form .wpcf7 form.spam .wpcf7-response-output {
+    background: #f6f5f2 !important;
+    border-color: #b33a3a !important;
+    color: #0a0a0a !important;
 }
 
 .misaki-trade-form__missing {

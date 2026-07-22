@@ -174,8 +174,10 @@ function misaki_woo_ensure_trade_cf7_form(): void
     $form_id   = (int) get_option(MISAKI_TRADE_CF7_FORM_OPTION, 0);
     $form_post = $form_id > 0 ? get_post($form_id) : null;
 
+    // ID de otro entorno / borrado: resetear y buscar por título o crear de nuevo.
     if (!$form_post || $form_post->post_type !== 'wpcf7_contact_form') {
-        $forms = get_posts([
+        $form_id = 0;
+        $forms   = get_posts([
             'post_type'      => 'wpcf7_contact_form',
             'post_status'    => 'publish',
             'posts_per_page' => -1,
@@ -221,7 +223,7 @@ function misaki_woo_ensure_trade_cf7_form(): void
     $contact_form->save();
 }
 
-add_action('after_setup_theme', 'misaki_woo_ensure_trade_cf7_form', 35);
+add_action('init', 'misaki_woo_ensure_trade_cf7_form', 25);
 
 /**
  * ID del formulario CF7 trade.
