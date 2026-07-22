@@ -10,7 +10,6 @@
     bottom: 1rem !important;
     left: 1rem !important;
     transform: none !important;
-    display: flex !important;
     flex-direction: column !important;
     grid-template-columns: none !important;
     gap: 0.55rem !important;
@@ -23,6 +22,17 @@
     border-radius: 0 !important;
     box-shadow: none !important;
     z-index: 99999 !important;
+    pointer-events: auto !important;
+}
+
+/* No forzar display:flex siempre: si no, el banner nunca se oculta al Accept/Deny/X */
+.cmplz-cookiebanner.cmplz-show {
+    display: flex !important;
+}
+
+.cmplz-cookiebanner.cmplz-dismissed,
+.cmplz-cookiebanner.cmplz-hidden {
+    display: none !important;
 }
 
 .cmplz-cookiebanner.cmplz-show,
@@ -62,11 +72,15 @@
 }
 
 .cmplz-cookiebanner .cmplz-close {
+    position: relative !important;
+    z-index: 2 !important;
     color: rgba(246, 245, 242, 0.55) !important;
     width: 1rem !important;
     height: 1rem !important;
     font-size: 0.875rem !important;
     line-height: 1 !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
 }
 
 .cmplz-cookiebanner .cmplz-message {
@@ -85,6 +99,8 @@
 }
 
 .cmplz-cookiebanner .cmplz-buttons .cmplz-btn {
+    position: relative !important;
+    z-index: 2 !important;
     flex: 1 1 0 !important;
     min-height: 0 !important;
     min-width: 0 !important;
@@ -100,6 +116,8 @@
     line-height: 1.2 !important;
     white-space: nowrap !important;
     zoom: 1 !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
 }
 
 .cmplz-cookiebanner .cmplz-buttons .cmplz-btn.cmplz-accept {

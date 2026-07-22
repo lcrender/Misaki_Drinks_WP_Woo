@@ -106,6 +106,14 @@ body.misaki-age-gate-active {
     overflow: hidden;
 }
 
+/* Age gate por encima del soft cookie wall de Complianz */
+body.cmplz-banner-active #misaki-age-gate,
+body.cmplz-banner-active #misaki-age-gate * {
+    pointer-events: auto !important;
+    user-select: auto !important;
+}
+
+body.misaki-age-gate-active #cmplz-cookiebanner-container,
 body.misaki-age-gate-active .cmplz-cookiebanner,
 body.misaki-age-gate-active #cmplz-manage-consent {
     visibility: hidden !important;
