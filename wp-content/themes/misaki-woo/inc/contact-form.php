@@ -142,6 +142,10 @@ function misaki_woo_ensure_contact_cf7_form(): void
 
     $contact_form->set_properties($properties);
     $contact_form->save();
+
+    // get_instance() marca este form como "current"; si no se limpia,
+    // Contact → Contact Forms abre el editor en vez de la lista.
+    WPCF7_ContactForm::get_instance(0);
 }
 
 add_action('init', 'misaki_woo_ensure_contact_cf7_form', 20);
