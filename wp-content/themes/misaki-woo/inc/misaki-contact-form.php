@@ -163,7 +163,7 @@ function misaki_woo_get_trade_cf7_mail_sent_ok_message(): string
 }
 
 /**
- * Crea o actualiza el formulario CF7 Misaki Contact Form.
+ * Crea el formulario CF7 Misaki Contact Form si no existe (no sobrescribe ediciones del admin).
  */
 function misaki_woo_ensure_trade_cf7_form(): void
 {
@@ -173,6 +173,7 @@ function misaki_woo_ensure_trade_cf7_form(): void
 
     $form_id   = (int) get_option(MISAKI_TRADE_CF7_FORM_OPTION, 0);
     $form_post = $form_id > 0 ? get_post($form_id) : null;
+    $created   = false;
 
     // ID de otro entorno / borrado: resetear y buscar por título o crear de nuevo.
     if (!$form_post || $form_post->post_type !== 'wpcf7_contact_form') {
@@ -203,9 +204,16 @@ function misaki_woo_ensure_trade_cf7_form(): void
         if (is_wp_error($form_id) || !$form_id) {
             return;
         }
+
+        $created = true;
     }
 
     update_option(MISAKI_TRADE_CF7_FORM_OPTION, (int) $form_id);
+
+    // Solo aplicar defaults al crear; si ya existe, respetar cambios del admin.
+    if (!$created) {
+        return;
+    }
 
     $contact_form = wpcf7_contact_form($form_id);
 
