@@ -1,0 +1,236 @@
+/**
+ * Misaki Contact Form (trade / B2B).
+ */
+
+.misaki-trade-page {
+    min-height: 60vh;
+    padding: calc(var(--misaki-header-h, 4rem) + 2rem) 1rem 3rem;
+    background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(200, 168, 90, 0.08), transparent 60%),
+        #0a0a0a;
+}
+
+.misaki-trade-page__inner {
+    width: min(100%, 40rem);
+    margin-inline: auto;
+}
+
+.misaki-trade-form {
+    padding: 1.5rem 1.25rem 1.25rem;
+    border: 1px solid rgba(200, 168, 90, 0.4);
+    background: #0a0a0a;
+    color: #f6f5f2;
+}
+
+.misaki-trade-form__intro {
+    margin: 0 0 1.5rem;
+    color: var(--misaki-gold, #c8a85a);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.misaki-trade-form__section {
+    margin: 0 0 1.5rem;
+    padding: 0 0 0.25rem;
+    border-bottom: 1px solid rgba(200, 168, 90, 0.2);
+}
+
+.misaki-trade-form__section:last-of-type {
+    border-bottom: 0;
+}
+
+.misaki-trade-form__section-title {
+    margin: 0 0 1rem;
+    color: #f6f5f2;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.misaki-trade-form__hint {
+    margin: 0 0 0.75rem;
+    color: rgba(246, 245, 242, 0.75);
+    font-size: 0.8125rem;
+    line-height: 1.45;
+}
+
+.misaki-trade-form__field {
+    margin: 0 0 0.9rem;
+    padding: 0;
+    border: 0;
+    min-width: 0;
+}
+
+.misaki-trade-form__legend {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: var(--misaki-gold, #c8a85a);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.misaki-trade-form__required {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.misaki-trade-form__optional {
+    color: rgba(246, 245, 242, 0.45);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-transform: none;
+}
+
+.misaki-trade-form__row {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0 0 0.9rem;
+}
+
+.misaki-trade-form__row > .misaki-trade-form__field {
+    margin-bottom: 0;
+}
+
+.misaki-trade-form__row > p {
+    display: contents;
+}
+
+@media (min-width: 40rem) {
+    .misaki-trade-form__row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.misaki-trade-form .wpcf7-form-control-wrap {
+    display: block;
+    width: 100%;
+}
+
+.misaki-trade-form .wpcf7-form-control:not(.wpcf7-checkbox):not(.wpcf7-radio):not(.wpcf7-submit) {
+    display: block;
+    width: 100%;
+    min-height: 2.35rem;
+    margin: 0;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid rgba(200, 168, 90, 0.35);
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.05);
+    color: #f6f5f2;
+    font-family: inherit;
+    font-size: 0.875rem;
+}
+
+.misaki-trade-form .wpcf7-form-control:not(.wpcf7-checkbox):not(.wpcf7-radio):not(.wpcf7-submit)::placeholder {
+    color: rgba(246, 245, 242, 0.4);
+}
+
+.misaki-trade-form .wpcf7-form-control:focus {
+    outline: none;
+    border-color: var(--misaki-gold, #c8a85a);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.misaki-trade-form .wpcf7-radio,
+.misaki-trade-form .wpcf7-checkbox {
+    display: grid;
+    gap: 0.4rem;
+}
+
+.misaki-trade-form .wpcf7-list-item {
+    display: block;
+    margin: 0;
+}
+
+.misaki-trade-form .wpcf7-list-item label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(246, 245, 242, 0.9);
+    font-size: 0.8125rem;
+    cursor: pointer;
+}
+
+.misaki-trade-form .wpcf7-list-item input[type="checkbox"],
+.misaki-trade-form .wpcf7-list-item input[type="radio"] {
+    width: 1rem;
+    height: 1rem;
+    margin: 0;
+    accent-color: var(--misaki-gold, #c8a85a);
+    flex-shrink: 0;
+}
+
+.misaki-trade-form__other {
+    margin-top: 0.5rem;
+}
+
+.misaki-trade-form__other[hidden] {
+    display: none !important;
+}
+
+.misaki-trade-form__actions {
+    margin-top: 0.5rem;
+}
+
+.misaki-trade-form .wpcf7-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 8rem;
+    padding: 0.55rem 1.25rem;
+    border: 1px solid var(--misaki-gold, #c8a85a);
+    border-radius: 0;
+    background: var(--misaki-gold, #c8a85a);
+    color: #0a0a0a;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.misaki-trade-form .wpcf7-submit:hover,
+.misaki-trade-form .wpcf7-submit:focus-visible {
+    background: #d4b66a;
+    border-color: #d4b66a;
+}
+
+.misaki-trade-form .wpcf7-not-valid-tip {
+    margin-top: 0.3rem;
+    color: #e8a0a0;
+    font-size: 0.75rem;
+}
+
+.misaki-trade-form .wpcf7-response-output {
+    margin: 1rem 0 0;
+    padding: 0.75rem;
+    border: 1px solid rgba(200, 168, 90, 0.35);
+    color: #f6f5f2;
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    white-space: pre-line;
+}
+
+.misaki-trade-form .wpcf7-mail-sent-ok,
+.misaki-trade-form form.sent .wpcf7-response-output {
+    border-color: rgba(200, 168, 90, 0.55);
+    color: #f6f5f2;
+}
+
+.misaki-trade-form__missing {
+    color: rgba(246, 245, 242, 0.75);
+    text-align: center;
+}
+
+.contact-form-wrap .hidden-fields-container,
+.misaki-trade-page .hidden-fields-container {
+    display: none !important;
+}

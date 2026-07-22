@@ -1,0 +1,113 @@
+/**
+ * Age gate — popup de verificación de edad (Misaki).
+ */
+
+.misaki-age-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: grid;
+    place-items: center;
+    padding: 1.25rem;
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.88) 100%);
+    backdrop-filter: blur(4px);
+}
+
+.misaki-age-gate[hidden] {
+    display: none !important;
+}
+
+.misaki-age-gate__panel {
+    width: min(100%, 22rem);
+    padding: 1.5rem 1.25rem 1.25rem;
+    background: #0a0a0a;
+    border: 1px solid rgba(200, 168, 90, 0.35);
+    text-align: center;
+}
+
+.misaki-age-gate__brand {
+    margin: 0 0 0.75rem;
+    color: var(--misaki-gold, #c8a85a);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.misaki-age-gate__title {
+    margin: 0 0 0.75rem;
+    color: #f6f5f2;
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.misaki-age-gate__text {
+    margin: 0 0 1.25rem;
+    color: rgba(246, 245, 242, 0.85);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+}
+
+.misaki-age-gate__actions {
+    display: flex;
+    gap: 0.4rem;
+    margin: 0 0 0.85rem;
+}
+
+.misaki-age-gate__btn {
+    flex: 1 1 0;
+    min-height: 0;
+    padding: 0.4rem 0.75rem;
+    border-radius: 0;
+    font-family: inherit;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.misaki-age-gate__btn--accept {
+    background: var(--misaki-gold, #c8a85a);
+    border: 1px solid var(--misaki-gold, #c8a85a);
+    color: #0a0a0a;
+}
+
+.misaki-age-gate__btn--accept:hover,
+.misaki-age-gate__btn--accept:focus-visible {
+    background: #d4b66a;
+    border-color: #d4b66a;
+}
+
+.misaki-age-gate__btn--deny {
+    background: transparent;
+    border: 1px solid rgba(246, 245, 242, 0.4);
+    color: #f6f5f2;
+}
+
+.misaki-age-gate__btn--deny:hover,
+.misaki-age-gate__btn--deny:focus-visible {
+    background: rgba(246, 245, 242, 0.08);
+    border-color: var(--misaki-gold, #c8a85a);
+}
+
+.misaki-age-gate__note {
+    margin: 0;
+    color: rgba(246, 245, 242, 0.45);
+    font-size: 0.6875rem;
+    line-height: 1.4;
+}
+
+body.misaki-age-gate-active {
+    overflow: hidden;
+}
+
+body.misaki-age-gate-active .cmplz-cookiebanner,
+body.misaki-age-gate-active #cmplz-manage-consent {
+    visibility: hidden !important;
+    pointer-events: none !important;
+}

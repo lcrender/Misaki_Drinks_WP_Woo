@@ -121,6 +121,21 @@ git pull
 docker compose -f docker-compose.prod.yml up -d
 ```
 
+## Cookies / Complianz (RGPD)
+
+Complianz **no** va en el repo (igual que Contact Form 7). El mu-plugin del tema sí: `wp-content/mu-plugins/misaki-complianz-banner.php` (fuerza el banner UE aunque solo haya cookies esenciales).
+
+Tras el deploy en producción:
+
+```bash
+cd /opt/misakidrinks
+chown -R 33:33 wp-content/plugins wp-content/upgrade wp-content/mu-plugins
+docker compose -f docker-compose.prod.yml --profile tools run --rm --user 33:33 wpcli \
+  plugin install complianz-gdpr --activate
+```
+
+Luego completar o revisar el wizard en **WP Admin → Complianz** (región EU, sin estadísticas/marketing), vincular Privacy Policy + Cookie Policy, y purgar caché Cloudflare.
+
 ## Notas
 
 - **WooCommerce / emails / pagos**: configurar después desde el panel de admin.

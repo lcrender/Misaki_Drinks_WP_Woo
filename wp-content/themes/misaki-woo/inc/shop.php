@@ -94,11 +94,11 @@ function misaki_woo_shop_page_title(string $page_title): string
 add_filter('woocommerce_page_title', 'misaki_woo_shop_page_title');
 
 /**
- * Cuatro productos por fila en desktop.
+ * Tres productos por fila en desktop.
  */
 function misaki_woo_shop_loop_columns(): int
 {
-    return 4;
+    return 3;
 }
 
 add_filter('loop_shop_columns', 'misaki_woo_shop_loop_columns');

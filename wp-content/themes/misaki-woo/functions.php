@@ -10,12 +10,15 @@ if (!defined('ABSPATH')) {
 require_once get_template_directory() . '/inc/services-admin.php';
 require_once get_template_directory() . '/inc/contact-admin.php';
 require_once get_template_directory() . '/inc/contact-form.php';
+require_once get_template_directory() . '/inc/misaki-contact-form.php';
+require_once get_template_directory() . '/inc/terms-conditions.php';
 require_once get_template_directory() . '/inc/home-admin.php';
 require_once get_template_directory() . '/inc/product-gallery.php';
 require_once get_template_directory() . '/inc/shop.php';
 require_once get_template_directory() . '/inc/my-account.php';
 require_once get_template_directory() . '/inc/cart.php';
 require_once get_template_directory() . '/inc/checkout.php';
+require_once get_template_directory() . '/inc/age-gate.php';
 
 add_action('after_setup_theme', function () {
     add_theme_support('title-tag');
@@ -126,6 +129,14 @@ add_action('wp_enqueue_scripts', function () {
         $theme_uri . '/assets/css/main.css',
         [],
         file_exists($css_path) ? (string) filemtime($css_path) : null
+    );
+
+    $cookies_css = $theme_dir . '/assets/css/cookies.css';
+    wp_enqueue_style(
+        'misaki-woo-cookies',
+        $theme_uri . '/assets/css/cookies.css',
+        ['misaki-woo-main'],
+        file_exists($cookies_css) ? (string) filemtime($cookies_css) : null
     );
 
     $js_path = $theme_dir . '/assets/js/header.js';
@@ -246,7 +257,7 @@ add_action('wp_enqueue_scripts', function () {
         wp_enqueue_script(
             'misaki-woo-product-gallery',
             $theme_uri . '/assets/js/product-gallery.js',
-            [],
+            ['jquery'],
             file_exists($gallery_js) ? (string) filemtime($gallery_js) : null,
             true
         );

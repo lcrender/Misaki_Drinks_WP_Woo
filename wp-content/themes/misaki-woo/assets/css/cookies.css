@@ -1,0 +1,158 @@
+/**
+ * Banner de cookies Complianz — Misaki (minimalista: solo Accept / Deny).
+ */
+
+.cmplz-cookiebanner {
+    font-family: inherit;
+    box-shadow: none !important;
+    border: 1px solid rgba(200, 168, 90, 0.3) !important;
+    border-radius: 0 !important;
+    background: #0a0a0a !important;
+    padding: 0.85rem 1rem !important;
+    gap: 0.65rem !important;
+    max-width: 28rem;
+}
+
+.cmplz-cookiebanner.cmplz-show,
+.cmplz-cookiebanner.cmplz-show:hover {
+    box-shadow: none !important;
+}
+
+/* Solo Accept + Deny */
+.cmplz-cookiebanner .cmplz-view-preferences,
+.cmplz-cookiebanner .cmplz-save-preferences,
+.cmplz-cookiebanner .cmplz-manage-options,
+.cmplz-cookiebanner .cmplz-categories,
+.cmplz-cookiebanner .cmplz-header .cmplz-logo,
+.cmplz-cookiebanner .cmplz-header .cmplz-title,
+.cmplz-cookiebanner .cmplz-links.cmplz-information {
+    display: none !important;
+}
+
+.cmplz-cookiebanner .cmplz-header {
+    display: flex !important;
+    justify-content: flex-end;
+    grid-template-columns: none !important;
+    margin: 0 !important;
+    min-height: 0;
+}
+
+.cmplz-cookiebanner .cmplz-close {
+    color: rgba(246, 245, 242, 0.55) !important;
+    width: 1rem;
+    height: 1rem;
+    font-size: 0.875rem;
+}
+
+.cmplz-cookiebanner .cmplz-message {
+    color: #f6f5f2 !important;
+    font-size: 0.8125rem !important;
+    line-height: 1.45 !important;
+    opacity: 0.9;
+    margin: 0 !important;
+}
+
+.cmplz-cookiebanner .cmplz-links a,
+.cmplz-cookiebanner a.cmplz-link {
+    color: var(--misaki-gold, #c8a85a) !important;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    font-size: 0.75rem !important;
+}
+
+.cmplz-cookiebanner .cmplz-links.cmplz-documents {
+    justify-content: flex-start !important;
+    gap: 0.75rem;
+    margin: 0 !important;
+}
+
+.cmplz-cookiebanner .cmplz-buttons {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.4rem !important;
+    width: auto !important;
+}
+
+.cmplz-cookiebanner .cmplz-buttons .cmplz-btn {
+    min-height: 0 !important;
+    min-width: 0 !important;
+    width: auto !important;
+    flex: 1 1 0;
+    padding: 0.35rem 0.75rem !important;
+    border-radius: 0 !important;
+    font-size: 0.6875rem !important;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.2 !important;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.cmplz-cookiebanner .cmplz-buttons .cmplz-btn.cmplz-accept {
+    background: var(--misaki-gold, #c8a85a) !important;
+    border: 1px solid var(--misaki-gold, #c8a85a) !important;
+    color: #0a0a0a !important;
+}
+
+.cmplz-cookiebanner .cmplz-buttons .cmplz-btn.cmplz-accept:hover,
+.cmplz-cookiebanner .cmplz-buttons .cmplz-btn.cmplz-accept:focus-visible {
+    background: #d4b66a !important;
+    border-color: #d4b66a !important;
+    color: #0a0a0a !important;
+}
+
+.cmplz-cookiebanner .cmplz-buttons .cmplz-btn.cmplz-deny {
+    background: transparent !important;
+    border: 1px solid rgba(246, 245, 242, 0.4) !important;
+    color: #f6f5f2 !important;
+}
+
+.cmplz-cookiebanner .cmplz-buttons .cmplz-btn.cmplz-deny:hover,
+.cmplz-cookiebanner .cmplz-buttons .cmplz-btn.cmplz-deny:focus-visible {
+    background: rgba(246, 245, 242, 0.08) !important;
+    border-color: var(--misaki-gold, #c8a85a) !important;
+    color: #f6f5f2 !important;
+}
+
+@media (min-width: 1024px) {
+    .cmplz-cookiebanner {
+        width: auto !important;
+        max-width: 26rem;
+        grid-template-columns: 1fr !important;
+    }
+
+    .cmplz-cookiebanner .cmplz-message,
+    .cmplz-cookiebanner .cmplz-links,
+    .cmplz-cookiebanner .cmplz-buttons {
+        grid-column: 1 / -1 !important;
+    }
+
+    .cmplz-cookiebanner .cmplz-buttons {
+        flex-direction: row !important;
+        grid-column-start: auto !important;
+        grid-row-start: auto !important;
+    }
+
+    .cmplz-cookiebanner .cmplz-buttons .cmplz-btn {
+        min-width: 0 !important;
+    }
+
+    .cmplz-cookiebanner .cmplz-links.cmplz-documents {
+        grid-column-start: auto !important;
+        grid-row-start: auto !important;
+    }
+}
+
+#cmplz-manage-consent .cmplz-manage-consent {
+    background: #0a0a0a;
+    border: 1px solid rgba(200, 168, 90, 0.45);
+    border-radius: 0;
+    box-shadow: none !important;
+    color: var(--misaki-gold, #c8a85a);
+    font-size: 0.6875rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.5rem 0.75rem;
+    min-width: 0;
+    height: auto;
+}
