@@ -4,13 +4,22 @@
 
 .cmplz-cookiebanner {
     font-family: inherit;
+    position: fixed !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: 1rem !important;
+    left: 1rem !important;
+    transform: none !important;
+    width: min(calc(100% - 2rem), 26rem) !important;
+    max-width: 26rem !important;
+    margin: 0 !important;
     box-shadow: none !important;
     border: 1px solid rgba(200, 168, 90, 0.3) !important;
     border-radius: 0 !important;
     background: #0a0a0a !important;
     padding: 0.85rem 1rem !important;
     gap: 0.65rem !important;
-    max-width: 28rem;
+    z-index: 99999;
 }
 
 .cmplz-cookiebanner.cmplz-show,
@@ -116,8 +125,14 @@
 
 @media (min-width: 1024px) {
     .cmplz-cookiebanner {
-        width: auto !important;
-        max-width: 26rem;
+        top: auto !important;
+        right: auto !important;
+        bottom: 1rem !important;
+        left: 1rem !important;
+        transform: none !important;
+        width: min(calc(100% - 2rem), 26rem) !important;
+        max-width: 26rem !important;
+        margin: 0 !important;
         grid-template-columns: 1fr !important;
     }
 
