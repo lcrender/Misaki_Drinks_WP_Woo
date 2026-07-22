@@ -85,6 +85,16 @@ function misaki_woo_get_contact_form_recipient(): string
 }
 
 /**
+ * Mensaje de éxito tras enviar el formulario de /contact/.
+ */
+function misaki_woo_get_contact_cf7_mail_sent_ok_message(): string
+{
+    return "Thank you for your message.\n\n"
+        . "We have received your enquiry and will get back to you as soon as possible.\n\n"
+        . "The Misaki Team";
+}
+
+/**
  * Crea o actualiza el formulario CF7 del tema.
  */
 function misaki_woo_ensure_contact_cf7_form(): void
@@ -139,6 +149,7 @@ function misaki_woo_ensure_contact_cf7_form(): void
     $properties['form'] = misaki_woo_get_contact_cf7_form_markup();
     $properties['mail'] = misaki_woo_get_contact_cf7_mail_properties();
     $properties['mail_2']['active'] = false;
+    $properties['messages']['mail_sent_ok'] = misaki_woo_get_contact_cf7_mail_sent_ok_message();
 
     $contact_form->set_properties($properties);
     $contact_form->save();

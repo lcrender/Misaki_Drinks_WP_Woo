@@ -391,14 +391,53 @@
     font-size: 0.8125rem;
 }
 
-.misaki-contact-form .wpcf7-response-output {
-    margin: 1rem 0 0;
-    padding: 0.85rem 1rem;
-    border: 1px solid rgba(200, 168, 90, 0.35);
-    border-radius: 0.75rem;
-    background: rgba(255, 255, 255, 0.05);
-    color: rgba(255, 255, 255, 0.92);
-    font-size: 0.875rem;
+/* CF7 response está fuera de .misaki-contact-form */
+.contact-form-wrap .wpcf7 .screen-reader-response {
+    position: absolute !important;
+    overflow: hidden !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    clip-path: inset(50%) !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    white-space: nowrap !important;
+}
+
+.contact-form-wrap .wpcf7 form.init .wpcf7-response-output,
+.contact-form-wrap .wpcf7 form.resetting .wpcf7-response-output,
+.contact-form-wrap .wpcf7 form.submitting .wpcf7-response-output {
+    display: none !important;
+}
+
+.contact-form-wrap .wpcf7-response-output,
+.contact-form-wrap .wpcf7 form .wpcf7-response-output {
+    margin: 2rem 0 0 !important;
+    padding: 1rem 1.1rem !important;
+    border: 1px solid rgba(200, 168, 90, 0.45) !important;
+    border-radius: 0.75rem !important;
+    background: rgba(200, 168, 90, 0.1) !important;
+    color: #ffffff !important;
+    font-size: 0.875rem !important;
+    line-height: 1.6 !important;
+    white-space: pre-line !important;
+}
+
+.contact-form-wrap .wpcf7 form.sent .wpcf7-response-output {
+    background: rgba(200, 168, 90, 0.12) !important;
+    border-color: var(--misaki-gold, #c8a85a) !important;
+    color: #ffffff !important;
+}
+
+.contact-form-wrap .wpcf7 form.invalid .wpcf7-response-output,
+.contact-form-wrap .wpcf7 form.unaccepted .wpcf7-response-output,
+.contact-form-wrap .wpcf7 form.failed .wpcf7-response-output,
+.contact-form-wrap .wpcf7 form.aborted .wpcf7-response-output,
+.contact-form-wrap .wpcf7 form.spam .wpcf7-response-output {
+    background: rgba(179, 58, 58, 0.15) !important;
+    border-color: #e8a0a0 !important;
+    color: #ffffff !important;
 }
 
 .misaki-contact-form__missing {
