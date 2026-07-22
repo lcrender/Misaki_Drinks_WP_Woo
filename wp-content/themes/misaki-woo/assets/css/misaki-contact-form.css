@@ -209,8 +209,11 @@
     font-size: 0.75rem;
 }
 
-/* CF7 styles estánados en esta página: ocultar el anuncio SR de arriba */
-.misaki-trade-form .wpcf7 .screen-reader-response {
+/*
+ * CF7 pone .screen-reader-response y .wpcf7-response-output FUERA de
+ * .misaki-trade-form; hay que apuntar desde .misaki-trade-page.
+ */
+.misaki-trade-page .wpcf7 .screen-reader-response {
     position: absolute !important;
     overflow: hidden !important;
     clip: rect(1px, 1px, 1px, 1px) !important;
@@ -223,31 +226,30 @@
     white-space: nowrap !important;
 }
 
-.misaki-trade-form .wpcf7-response-output,
-.misaki-trade-form .wpcf7 form .wpcf7-response-output {
-    margin: 2rem 0 0;
-    padding: 1rem 1.1rem;
+.misaki-trade-page .wpcf7-response-output,
+.misaki-trade-page .wpcf7 form .wpcf7-response-output {
+    margin: 2rem 0 0 !important;
+    padding: 1rem 1.1rem !important;
     border: 1px solid rgba(200, 168, 90, 0.45) !important;
-    border-radius: 0;
-    background: rgba(200, 168, 90, 0.08) !important;
+    border-radius: 0 !important;
+    background: rgba(200, 168, 90, 0.1) !important;
     color: #ffffff !important;
-    font-size: 0.875rem;
-    line-height: 1.6;
-    white-space: pre-line;
+    font-size: 0.875rem !important;
+    line-height: 1.6 !important;
+    white-space: pre-line !important;
 }
 
-.misaki-trade-form .wpcf7 form.sent .wpcf7-response-output,
-.misaki-trade-form form.sent .wpcf7-response-output {
-    background: rgba(200, 168, 90, 0.1) !important;
+.misaki-trade-page .wpcf7 form.sent .wpcf7-response-output {
+    background: rgba(200, 168, 90, 0.12) !important;
     border-color: var(--misaki-gold, #c8a85a) !important;
     color: #ffffff !important;
 }
 
-.misaki-trade-form .wpcf7 form.invalid .wpcf7-response-output,
-.misaki-trade-form .wpcf7 form.unaccepted .wpcf7-response-output,
-.misaki-trade-form .wpcf7 form.failed .wpcf7-response-output,
-.misaki-trade-form .wpcf7 form.aborted .wpcf7-response-output,
-.misaki-trade-form .wpcf7 form.spam .wpcf7-response-output {
+.misaki-trade-page .wpcf7 form.invalid .wpcf7-response-output,
+.misaki-trade-page .wpcf7 form.unaccepted .wpcf7-response-output,
+.misaki-trade-page .wpcf7 form.failed .wpcf7-response-output,
+.misaki-trade-page .wpcf7 form.aborted .wpcf7-response-output,
+.misaki-trade-page .wpcf7 form.spam .wpcf7-response-output {
     background: rgba(179, 58, 58, 0.15) !important;
     border-color: #e8a0a0 !important;
     color: #ffffff !important;
