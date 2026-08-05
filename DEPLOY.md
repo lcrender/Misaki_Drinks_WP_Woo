@@ -139,5 +139,16 @@ Luego completar o revisar el wizard en **WP Admin → Complianz** (región EU, s
 ## Notas
 
 - **WooCommerce / emails / pagos**: configurar después desde el panel de admin.
+- **WooPayments (Stripe)**: el plugin `woocommerce-payments` va en el repo. Tras `git pull` en producción, activarlo si hace falta:
+
+  ```bash
+  cd /opt/misakidrinks
+  chown -R 33:33 wp-content/plugins
+  docker compose -f docker-compose.prod.yml --profile tools run --rm --user 33:33 wpcli \
+    plugin activate woocommerce-payments
+  ```
+
+  Luego completar el onboarding en **WP Admin → Payments** (cuenta WordPress.com + verificación Stripe/KYC, modo live).
+- **Basic Auth + webhooks**: mientras el sitio lleve Basic Auth, Traefik deja pasar sin auth las rutas de webhook (`/wc-api`, `?wc-api=…`, `/wp-json/wc/v3/payments`, `/wp-json/wpcom`). Cuando se retire el Basic Auth, eliminar también el router `misakidrinks-webhooks` en `docker-compose.prod.yml`.
 - **Coming soon**: desactivado en local; no debería bloquear la vista en producción.
 - Desarrollo local sigue usando `docker-compose.yml` y `.env.example` (puerto `8080`).

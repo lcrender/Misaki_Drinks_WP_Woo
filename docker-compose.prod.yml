@@ -77,6 +77,14 @@ services:
       - "traefik.http.routers.misakidrinks-front.tls.certresolver=mytlschallenge"
       - "traefik.http.routers.misakidrinks-front.middlewares=misakidrinks-auth"
       - "traefik.http.routers.misakidrinks-front.service=misakidrinks-front"
+      # Webhooks WooPayments / Stripe / WooCommerce API: sin Basic Auth
+      # (quitar este router cuando se retire el Basic Auth del sitio)
+      - "traefik.http.routers.misakidrinks-webhooks.rule=Host(`misakidrinks.com`) && (PathPrefix(`/wc-api`) || PathPrefix(`/wp-json/wc/v3/payments`) || PathPrefix(`/wp-json/wpcom`) || QueryRegexp(`wc-api`, `.+`))"
+      - "traefik.http.routers.misakidrinks-webhooks.entrypoints=websecure"
+      - "traefik.http.routers.misakidrinks-webhooks.tls=true"
+      - "traefik.http.routers.misakidrinks-webhooks.tls.certresolver=mytlschallenge"
+      - "traefik.http.routers.misakidrinks-webhooks.priority=200"
+      - "traefik.http.routers.misakidrinks-webhooks.service=misakidrinks-front"
       # HTTPS www → 301 a https://misakidrinks.com
       - "traefik.http.routers.misakidrinks-front-www.rule=Host(`www.misakidrinks.com`)"
       - "traefik.http.routers.misakidrinks-front-www.entrypoints=websecure"
