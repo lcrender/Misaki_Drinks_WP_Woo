@@ -40,16 +40,9 @@ Variables obligatorias:
 
 - `WORDPRESS_DB_*` y `MYSQL_ROOT_PASSWORD` — contraseñas fuertes y únicas
 - `WP_HOME` / `WP_SITEURL` — `https://misakidrinks.com`
-- `TRAEFIK_BASIC_AUTH_USERS` — acceso temporal al sitio (Basic Auth)
 - Salts de WordPress — generar en https://api.wordpress.org/secret-key/1.1/salt/
 
-Para `TRAEFIK_BASIC_AUTH_USERS`:
-
-```bash
-htpasswd -nbB cliente 'TuPasswordTemporalFuerte'
-```
-
-Copiar salida en `.env` y escapar `$` como `$$`.
+**No usar Basic Auth de Traefik** mientras WooPayments/Jetpack esté activo: Jetpack exige que `https://misakidrinks.com` sea públicamente accesible (sin HTTP auth). Si `TRAEFIK_BASIC_AUTH_USERS` sigue en el `.env` del servidor, puede ignorarse; ya no se aplica en el compose.
 
 ## 3. Exportar datos desde local
 
@@ -148,7 +141,6 @@ Luego completar o revisar el wizard en **WP Admin → Complianz** (región EU, s
     plugin activate woocommerce-payments
   ```
 
-  Luego completar el onboarding en **WP Admin → Payments** (cuenta WordPress.com + verificación Stripe/KYC, modo live).
-- **Basic Auth + webhooks**: mientras el sitio lleve Basic Auth, Traefik deja pasar sin auth las rutas de webhook (`/wc-api`, `?wc-api=…`, `/wp-json/wc/v3/payments`, `/wp-json/wpcom`). Cuando se retire el Basic Auth, eliminar también el router `misakidrinks-webhooks` en `docker-compose.prod.yml`.
+  Luego completar el onboarding en **WP Admin → Payments** (cuenta WordPress.com + verificación Stripe/KYC, modo live). El sitio debe ser público (sin Basic Auth de Traefik); si no, Jetpack falla con “site must be publicly accessible”.
 - **Coming soon**: desactivado en local; no debería bloquear la vista en producción.
 - Desarrollo local sigue usando `docker-compose.yml` y `.env.example` (puerto `8080`).
