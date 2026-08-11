@@ -1,0 +1,296 @@
+#mrw_container{
+  clear:both;
+}
+
+.mrw_column{
+  float:left;
+  padding:0 2em;
+}
+
+#generate_form{
+  text-align: right;
+  clear:both;
+}
+
+#download_form{
+  clear:both;
+  text-align: right;
+}
+
+#mrw_select_service{
+  display:block;
+}
+
+#mrw_select_npackages{
+  margin:0 0 !important;
+  display:block;
+
+}
+
+#mrw_select_weight {
+  margin: 0 0 !important;
+  display: block;
+}
+
+.mrw_data_title{
+  font-weight: bold;
+  margin-top: 1em;
+}
+
+.mrw_comment a{
+  word-wrap: break-word;
+  margin-left: 0.5em !important;
+}
+
+#mrw_tracking_info_no{
+	display:none;
+}
+
+#mrw_tracking_info_si{
+	display:block;
+}
+
+#mrw_tracking_info_si a, #mrw_tracking_info_no a{
+  margin:0 0 !important;
+	color: #0000CD;
+  margin-left: 0.5em;
+  padding-left: 0.5em;
+}
+
+#mrw_tracking_info_si p, #mrw_tracking_info_no p{
+  font-weight: bold;
+  color: #444444;
+  margin-bottom:5px;
+  margin-top:0px;
+}
+
+#mrw_tracking_info_si span, #mrw_tracking_info_no span{
+  color: #444444;
+  padding-left:10px;
+}
+
+#mrw_address_info_no{
+  display:none;
+}
+
+#mrw_address_info_si{
+  display:none;
+}
+
+#mrw_address_info_si a, #mrw_address_info_no a{
+  margin:0 0 !important;
+  color: #0000CD;
+  margin-left: 0.5em;
+  padding-left: 0.5em;
+}
+
+#mrw_address_info_si p, #mrw_address_info_no p{
+  font-weight: bold;
+  color: #444444;
+  margin-bottom:5px;
+  margin-top:0px;
+}
+
+#mrw_address_info_si span, #mrw_address_info_no span{
+  color: #444444;
+  padding-left:10px;
+}
+
+#shipment_data input{
+  margin-left: 0.5em;
+  vertical-align: middle;
+}
+
+#shipment_address_data input{
+  margin-left: 0.5em;
+  vertical-align: middle;
+}
+
+#mrw_select_comments{
+  margin:0 auto !important;
+  width: 90%;
+}
+
+p.mrw_soap{
+  color: red;
+}
+
+
+/*Shipping table rates styles*/
+table#mrw_table{
+   width: 100%;
+   margin:0 auto;
+   padding-top: 10px;
+   padding-left:10px;
+   background: white;
+   overflow-x: scroll;
+   white-space: nowrap;
+   /*border:1px solid black;
+   border-collapse: collapse;*/
+
+   display:block;
+}
+
+
+/** TABLE FORMAT **/
+table#mrw_table td{
+  
+   /*border:1px solid black;
+   border-collapse: collapse;*/
+   padding: 5px 5px;
+}
+
+table#mrw_table thead tr th.colsmall{
+   padding-right: 2em;
+   text-align: left;
+   vertical-align: middle;
+
+}
+
+table#mrw_table thead tr th.colrange input{
+   width: 3em;
+   text-align: center;
+}
+
+table#mrw_table tbody tr td.mrwchecks{
+   text-align: center;
+   vertical-align: middle;
+   padding-right: 2em;
+}
+
+table#mrw_table tbody tr td.mrwprices input{
+   text-align: center;
+}
+
+input.ranges_inf{
+  width:3em;
+}
+
+input.ranges_sup{
+  width:3em;
+}
+
+input.fees2{
+  width:3em;
+}
+
+table#mrwtable td.zone td.range_sign{
+  width:2em;
+  background-color:#0EBEBA;
+}
+
+/** END TABLE FORMAT **/
+
+/** TABLE COLOURS **/
+.range_sign, .border_bottom, .range_data{
+  background-color: #A9D0F5;
+}
+
+tr.fees td:nth-child(even){
+  background-color:#FFF;
+}
+tr.fees td:nth-child(odd){
+  background-color:#F1F1F1;
+}
+
+tr.fees td:first-child{
+  background-color:#EFFBF8;
+}
+
+tr#range_inf td:nth-child(even){
+  background-color:#FFF;
+  width:5em;
+}
+
+tr#range_inf td:nth-child(odd){
+  background-color:#F1F1F1;
+  width:5em;
+}
+
+tr#range_inf td:nth-child(2){
+  background-color:#EFFBF8;
+  width:2em !important;
+}
+
+tr#range_inf td:first-child{
+  background-color:#FFF;
+}
+
+tr#range_sup td:nth-child(even){
+  background-color:#FFF;
+}
+
+tr#range_sup td:nth-child(odd){
+  background-color:#F1F1F1;
+}
+
+tr#range_sup td:nth-child(2){
+  background-color:#EFFBF8;
+  width:2em !important;
+}
+
+tr#range_sup td:first-child{
+  background-color:#FFF;
+}
+
+/** END TABLE COLORS **/
+
+
+/*LOADER*/
+#div_loader{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: black;
+    opacity: 0.8;
+    display:none;
+    z-index:1;
+}
+
+#load{
+    position:fixed;
+    top:50%;
+    left: 50%;
+    margin-top: -25px;
+    margin-left: -25px;
+}
+/*END LOADER*/
+
+
+
+.new_range{
+
+  display:none;
+}
+
+
+/*BUTTONS STYLES*/
+#btn_add_range{
+  background-color:green;
+  margin:10px;
+}
+
+#btn_delete_range{
+  background-color:red;
+  margin:10px;
+}
+
+#btn_save{
+  margin:10px;
+}
+
+#save_taxes{
+
+}
+
+#add_range{
+
+}
+
+#delete_range{
+
+}
+/*END BUTTONS STYLES*/
+

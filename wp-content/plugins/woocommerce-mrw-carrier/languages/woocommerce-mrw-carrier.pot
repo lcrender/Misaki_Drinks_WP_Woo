@@ -1,0 +1,362 @@
+# Loco Gettext template
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce MRW\n"
+"Report-Msgid-Bugs-To: pablo tribaldos\n"
+"POT-Creation-Date: 2018-04-24 08:21+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Source-Locale: en_GB\n"
+"X-Loco-Project-Id: 9883\n"
+"X-Loco-Api-Version: 1.0.16 20170414-1"
+
+msgid "Enable"
+msgstr ""
+
+msgid "Enable MRW Carrier"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "This controls the title which the user sees during checkout."
+msgstr ""
+
+msgid "Environment"
+msgstr ""
+
+msgid "Environment development/live"
+msgstr ""
+
+msgid "Development environment"
+msgstr ""
+
+msgid "Live environment"
+msgstr ""
+
+msgid "Franchise"
+msgstr ""
+
+msgid "5 digits number XXXXX"
+msgstr ""
+
+msgid "Franchise number, must be 5 digits long"
+msgstr ""
+
+msgid "e.g. 12345"
+msgstr ""
+
+msgid "Subscriber"
+msgstr ""
+
+msgid "Subsccriber number, must be 6 digits long"
+msgstr ""
+
+msgid "6 digits number XXXXXX"
+msgstr ""
+
+msgid "e.g. 123456"
+msgstr ""
+
+msgid "Department"
+msgstr ""
+
+msgid "Department code (optional)"
+msgstr ""
+
+msgid "Optional"
+msgstr ""
+
+msgid "MRW User"
+msgstr ""
+
+msgid "MRW Password"
+msgstr ""
+
+msgid "Select services"
+msgstr ""
+
+msgid "Select MRW services"
+msgstr ""
+
+msgid "Notifications"
+msgstr ""
+
+msgid "Without notifications"
+msgstr ""
+
+msgid "Notifications via Email"
+msgstr ""
+
+msgid "Notifications via SMS"
+msgstr ""
+
+msgid "Notifications via SMS and Email"
+msgstr ""
+
+msgid "Specific Countries"
+msgstr ""
+
+msgid "Select some countries"
+msgstr ""
+
+msgid "Error Log"
+msgstr ""
+
+msgid "Check this option if you want to generate an error log"
+msgstr ""
+
+msgid ""
+"This module allows you to automate the generation of the shipping labels and "
+"packages shipping vía MRW carrier"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Save taxes"
+msgstr ""
+
+msgid "Tablerate"
+msgstr ""
+
+msgid "Generate label"
+msgstr ""
+
+msgid "Generating label"
+msgstr ""
+
+msgid "Download label"
+msgstr ""
+
+msgid "Shipping number:"
+msgstr ""
+
+msgid "Shipping information:"
+msgstr ""
+
+msgid "There is no tracking information yet"
+msgstr ""
+
+msgid "There has been an error generating the label"
+msgstr ""
+
+msgid "Tracking information"
+msgstr ""
+
+msgid "Taxes saved"
+msgstr ""
+
+msgid "Ranges saved"
+msgstr ""
+
+msgid "There is an error in ranges configuration"
+msgstr ""
+
+msgid "Calculate shipping from"
+msgstr ""
+
+msgid "Weight"
+msgstr ""
+
+msgid "Price"
+msgstr ""
+
+msgid "Show most expensive/Don´t show"
+msgstr ""
+
+msgid "Show most expensive rate"
+msgstr ""
+
+msgid "There has been a problem saving taxes"
+msgstr ""
+
+msgid "Add range"
+msgstr ""
+
+msgid "Don`t show rate"
+msgstr ""
+
+msgid "If there is no shipping rate that match"
+msgstr ""
+
+msgid "The shipping label was generated successfully!"
+msgstr ""
+
+msgid "Service"
+msgstr ""
+
+msgid "Number of packages"
+msgstr ""
+
+msgid "Comments"
+msgstr ""
+
+msgid "Deliver on Saturday"
+msgstr ""
+
+msgid "With return"
+msgstr ""
+
+msgid "Default service"
+msgstr ""
+
+msgid "Available services"
+msgstr ""
+
+msgid "Wont be available if it isn't selected in available services"
+msgstr ""
+
+msgid "Shipment information"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "Write a comment (Optional)"
+msgstr ""
+
+msgid "Delivery in franchise"
+msgstr ""
+
+msgid "Package apportionment"
+msgstr ""
+
+msgid "Check just in case your franchise tells you"
+msgstr ""
+
+msgid "MRW Tracking Password"
+msgstr ""
+
+msgid "Check this option if you want to do package apportionment"
+msgstr ""
+
+msgid "Weight/Price"
+msgstr ""
+
+msgid "Delete range"
+msgstr ""
+
+msgid "Tracking password, ask the franchise"
+msgstr ""
+
+msgid "Pick up address"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Street"
+msgstr ""
+
+msgid "Number"
+msgstr ""
+
+msgid "Postal code"
+msgstr ""
+
+msgid "City"
+msgstr ""
+
+msgid "Change pick up address"
+msgstr ""
+
+msgid "Free delivery from"
+msgstr ""
+
+msgid "Delivery free if the order price is above this amount. 0 to disable"
+msgstr ""
+
+msgid "Free shipping if the order price is above this amount. 0 to disable"
+msgstr ""
+
+msgid "Spain"
+msgstr ""
+
+msgid "Click on the select box to add available services"
+msgstr ""
+
+msgid "Time slot"
+msgstr ""
+
+msgid "Time slot (just for Ecommerce service)"
+msgstr ""
+
+msgid "Don't use time slot"
+msgstr ""
+
+msgid "Between 08:00 and 14:00 hours"
+msgstr ""
+
+msgid "Between 16:00 and 19:00 hours"
+msgstr ""
+
+msgid "Between 20:00 and 22:00 hours"
+msgstr ""
+
+msgid "Order Status"
+msgstr ""
+
+msgid "Order status when the label is generated"
+msgstr ""
+
+msgid "Class SOAP must be active in order to generate labels"
+msgstr ""
+
+msgid "Show order comments in labels"
+msgstr ""
+
+msgid "Check this option if you want to show order comments in the label"
+msgstr ""
+
+msgid "Default service for national shippings"
+msgstr ""
+
+msgid "Default international service"
+msgstr ""
+
+msgid "Marketplaces Flag"
+msgstr ""
+
+msgid "Check this option if you want to print market places labels. Just in case your franchise tells you"
+msgstr ""
+
+msgid "Enable for all carriers"
+msgstr ""
+
+msgid "Check this option if you want to enable this shipping for all carriers"
+msgstr ""
+
+msgid "Terms"
+msgstr ""
+
+msgid "Accept Terms"
+msgstr ""
+
+msgid ""
+"MRW will only support the last two versions of the plug-in. It is the client\'s "
+"responsibility to keep the plug-in updated to one of these two versions. MRW "
+"will ensure that the plug-in is kept up to date and notify the client of any "
+"potential vulnerability in it. It is the client\'s responsibility, as the data "
+"controller and owner of its information systems, to ensure the appropriate "
+"security and privacy of its data."
+msgstr ""
+
+msgid ""
+"It is necessary to accept the terms in the module configuration before being "
+"able to use this section"
+msgstr ""

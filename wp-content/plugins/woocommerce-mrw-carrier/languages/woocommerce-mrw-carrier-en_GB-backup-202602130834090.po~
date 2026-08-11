@@ -1,0 +1,405 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce MRW\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-04-24 08:21+0000\n"
+"PO-Revision-Date: 2025-12-05 09:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: English (UK)\n"
+"Language: en_GB\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Source-Locale: en_GB\n"
+"X-Loco-Project-Id: 9883\n"
+"X-Loco-Api-Version: 1.0.16 20170414-1\n"
+"X-Loco-Version: 2.7.1; wp-6.9"
+
+msgid "5 digits number XXXXX"
+msgstr "5 digits number XXXXX"
+
+msgid "6 digits number XXXXXX"
+msgstr "6 digits number XXXXXX"
+
+msgid "Accept Terms"
+msgstr "Accept Terms"
+
+msgid "Add range"
+msgstr "Add range"
+
+msgid "All"
+msgstr "All"
+
+msgid "Available services"
+msgstr "Available services"
+
+msgid "Between 08:00 and 14:00 hours"
+msgstr "Between 08:00 and 14:00 hours"
+
+msgid "Between 16:00 and 19:00 hours"
+msgstr "Between 16:00 and 19:00 hours"
+
+msgid "Between 20:00 and 22:00 hours"
+msgstr "Between 20:00 and 22:00 hours"
+
+msgid "Calculate shipping from"
+msgstr "Calculate shipping from"
+
+msgid "Change pick up address"
+msgstr "Change pick up address"
+
+msgid "Check just in case your franchise tells you"
+msgstr "Check just in case your franchise tells you"
+
+msgid "Check this option if you want to do package apportionment"
+msgstr "Check this option if you want to do package apportionment"
+
+msgid "Check this option if you want to enable this shipping for all carriers"
+msgstr "Check this option if you want to enable this shipping for all carriers"
+
+msgid "Check this option if you want to generate an error log"
+msgstr "Check this option if you want to generate an error log"
+
+msgid ""
+"Check this option if you want to print market places labels. Just in case "
+"your franchise tells you"
+msgstr ""
+"Check this option if you want to print market places labels. Just in case "
+"your franchise tells you"
+
+msgid "Check this option if you want to show order comments in the label"
+msgstr "Check this option if you want to show order comments in the label"
+
+msgid "City"
+msgstr "City"
+
+msgid "Class SOAP must be active in order to generate labels"
+msgstr "Class SOAP must be active in order to generate labels"
+
+msgid "Click on the select box to add available services"
+msgstr "Click on the select box to add available services"
+
+msgid "Comments"
+msgstr "Comments"
+
+msgid "Default international service"
+msgstr "Default international service"
+
+msgid "Default Ecommerce Slot"
+msgstr "Default Ecommerce Slot"
+
+msgid "Default slot for Ecommerce Service"
+msgstr "Default slot for Ecommerce Service"
+
+msgid "Default frequency"
+msgstr "Default frequency"
+
+msgid "Default frequency for shipping"
+msgstr "Default frequency for shipping for Urgente Hoy service"
+
+msgid "1ª Frecuencia"
+msgstr "1st Frequency"
+
+msgid "2ª Frecuencia"
+msgstr "2nd Frequency"
+
+msgid "No Slot"
+msgstr "No Slot"
+
+msgid "08:00 to 14:00"
+msgstr "08:00 - 14:00"
+
+msgid "16:00 to 19:00"
+msgstr "16:00 - 19:00"
+
+msgid "20:00 to 22:00"
+msgstr "20:00 - 22:00"
+
+msgid "Default service"
+msgstr "Default service"
+
+msgid "Default service for national shippings"
+msgstr "Default service for national shippings"
+
+msgid "Delete range"
+msgstr "Delete range"
+
+msgid "Deliver on Saturday"
+msgstr "Deliver on Saturday"
+
+msgid "Delivery free if the order price is above this amount. 0 to disable"
+msgstr "Delivery free if the order price is above this amount. 0 to disable"
+
+msgid "Delivery in franchise"
+msgstr "Delivery in franchise"
+
+msgid "Department"
+msgstr "Department"
+
+msgid "Department code (optional)"
+msgstr "Department code (optional)"
+
+msgid "Development environment"
+msgstr "Development environment"
+
+msgid "Don't use time slot"
+msgstr "Don't use time slot"
+
+msgid "Don`t show rate"
+msgstr "Don`t show rate"
+
+msgid "Download label"
+msgstr "Download label"
+
+msgid "e.g. 12345"
+msgstr "e.g. 12345"
+
+msgid "e.g. 123456"
+msgstr "e.g. 123456"
+
+msgid "Enable"
+msgstr "Enable"
+
+msgid "Enable for all carriers"
+msgstr "Enable for all carriers"
+
+msgid "Enable MRW Carrier"
+msgstr "Enable MRW Carrier"
+
+msgid "Environment"
+msgstr "Environment"
+
+msgid "Environment development/live"
+msgstr "Environment development/live"
+
+msgid "Error Log"
+msgstr "Error Log"
+
+msgid "Franchise"
+msgstr "Franchise"
+
+msgid "Franchise number, must be 5 digits long"
+msgstr "Franchise number, must be 5 digits long"
+
+msgid "Free delivery from"
+msgstr "Free delivery from"
+
+msgid "Free shipping if the order price is above this amount. 0 to disable"
+msgstr "Free shipping if the order price is above this amount. 0 to disable"
+
+msgid "Generate label"
+msgstr "Generate label"
+
+msgid "Generating label"
+msgstr "Generating label"
+
+msgid "If there is no shipping rate that match"
+msgstr "If there is no shipping rate that match"
+
+msgid ""
+"It is necessary to accept the terms in the module configuration before being "
+"able to use this section"
+msgstr ""
+"It is necessary to accept the terms in the module configuration before being "
+"able to use this section"
+
+msgid "Live environment"
+msgstr "Live environment"
+
+msgid "Marketplaces Flag"
+msgstr "Marketplaces Flag"
+
+msgid "MRW Password"
+msgstr "MRW Password"
+
+msgid "MRW Tracking Password"
+msgstr "MRW Tracking Password"
+
+msgid "MRW User"
+msgstr "MRW User"
+
+msgid ""
+"MRW will only support the last two versions of the plug-in. It is the "
+"client's responsibility to keep the plug-in updated to one of these two "
+"versions. MRW will ensure that the plug-in is kept up to date and notify the "
+"client of any potential vulnerability in it. It is the client's "
+"responsibility, as the data controller and owner of its information systems, "
+"to ensure the appropriate security and privacy of its data."
+msgstr ""
+"MRW will only support the last two versions of the plug-in. It is the "
+"client's responsibility to keep the plug-in updated to one of these two "
+"versions. MRW will ensure that the plug-in is kept up to date and notify the "
+"client of any potential vulnerability in it. It is the client's "
+"responsibility, as the data controller and owner of its information systems, "
+"to ensure the appropriate security and privacy of its data."
+
+msgid "Name"
+msgstr "Name"
+
+msgid "No"
+msgstr "No"
+
+msgid "Notifications"
+msgstr "Notifications"
+
+msgid "Notifications via Email"
+msgstr "Notifications via Email"
+
+msgid "Notifications via SMS"
+msgstr "Notifications via SMS"
+
+msgid "Notifications via SMS and Email"
+msgstr "Notifications via SMS and Email"
+
+msgid "Number"
+msgstr "Number"
+
+msgid "Number of packages"
+msgstr "Number of packages"
+
+msgid "Optional"
+msgstr "Optional"
+
+msgid "Order Status"
+msgstr "Order Status"
+
+msgid "Order status when the label is generated"
+msgstr "Order status when the label is generated"
+
+msgid "Package apportionment"
+msgstr "Package apportionment"
+
+msgid "Pick up address"
+msgstr "Pick up address"
+
+msgid "Postal code"
+msgstr "Postal code"
+
+msgid "Price"
+msgstr "Price"
+
+msgid "Ranges saved"
+msgstr "Ranges saved"
+
+msgid "Save taxes"
+msgstr "Save taxes"
+
+msgid "Select MRW services"
+msgstr "Select MRW services"
+
+msgid "Select services"
+msgstr "Select services"
+
+msgid "Select some countries"
+msgstr "Select some countries"
+
+msgid "Service"
+msgstr "Service"
+
+msgid "Settings"
+msgstr "Settings"
+
+msgid "Shipment information"
+msgstr "Shipment information"
+
+msgid "Shipping information:"
+msgstr "Shipping information:"
+
+msgid "Shipping number:"
+msgstr "Shipping number:"
+
+msgid "Show most expensive rate"
+msgstr "Show most expensive rate"
+
+msgid "Show most expensive/Don´t show"
+msgstr "Show most expensive/Don´t show"
+
+msgid "Show order comments in labels"
+msgstr "Show order comments in labels"
+
+msgid "Spain"
+msgstr "Spain"
+
+msgid "Specific Countries"
+msgstr "Specific Countries"
+
+msgid "Street"
+msgstr "Street"
+
+msgid "Subsccriber number, must be 6 digits long"
+msgstr "Subsccriber number, must be 6 digits long"
+
+msgid "Subscriber"
+msgstr "Subscriber"
+
+msgid "Tablerate"
+msgstr "Tablerate"
+
+msgid "Taxes saved"
+msgstr "Taxes saved"
+
+msgid "Terms"
+msgstr "Terms"
+
+msgid "The shipping label was generated successfully!"
+msgstr "The shipping label was generated successfully!"
+
+msgid "There has been a problem saving taxes"
+msgstr "There has been a problem saving taxes"
+
+msgid "There has been an error generating the label"
+msgstr "There has been an error generating the label"
+
+msgid "There is an error in ranges configuration"
+msgstr "There is an error in ranges configuration"
+
+msgid "There is no tracking information yet"
+msgstr "There is no tracking information yet"
+
+msgid "This controls the title which the user sees during checkout."
+msgstr "This controls the title which the user sees during checkout."
+
+msgid ""
+"This module allows you to automate the generation of the shipping labels and "
+"packages shipping vía MRW carrier"
+msgstr ""
+"This module allows you to automate the generation of the shipping labels and "
+"packages shipping vía MRW carrier"
+
+msgid "Time slot"
+msgstr "Time slot"
+
+msgid "Time slot (just for Ecommerce service)"
+msgstr "Time slot (just for Ecommerce service)"
+
+msgid "Title"
+msgstr "Title"
+
+msgid "Tracking information"
+msgstr "Tracking information"
+
+msgid "Tracking password, ask the franchise"
+msgstr "Tracking password, ask the franchise"
+
+msgid "Weight"
+msgstr "Weight"
+
+msgid "Weight/Price"
+msgstr "Weight/Price"
+
+msgid "With return"
+msgstr "With return"
+
+msgid "Without notifications"
+msgstr "Without notifications"
+
+msgid "Wont be available if it isn't selected in available services"
+msgstr "Wont be available if it isn't selected in available services"
+
+msgid "Write a comment (Optional)"
+msgstr "Write a comment (Optional)"
+
+msgid "Yes"
+msgstr "Yes"
