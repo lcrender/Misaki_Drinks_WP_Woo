@@ -49,9 +49,9 @@
     max-width: 100%;
 }
 
-/* ——— Anular floats WooCommerce ——— */
-.misaki-checkout .col2-set::before,
-.misaki-checkout .col2-set::after,
+/* ——— Anular floats WooCommerce (solo formulario checkout) ——— */
+.misaki-checkout #customer_details.col2-set::before,
+.misaki-checkout #customer_details.col2-set::after,
 .misaki-checkout #payment::before,
 .misaki-checkout #payment::after,
 .misaki-checkout .place-order::before,
@@ -404,13 +404,19 @@
 .misaki-checkout .woocommerce-order {
     max-width: min(100%, 36rem);
     margin: 0 auto;
-    padding: 1.75rem 1.5rem;
+    padding: 1.75rem 1.5rem 2rem;
     border: 1px solid rgba(200, 168, 90, 0.28);
     border-radius: 1.25rem;
     background: #f6f5f2;
     box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.2);
     color: #4a4a4a;
     text-align: center;
+}
+
+.misaki-checkout .woocommerce-order::after {
+    content: "";
+    display: block;
+    clear: both;
 }
 
 .misaki-checkout .woocommerce-order-overview {
@@ -468,6 +474,54 @@
 .misaki-checkout .shop_table.order_details td {
     padding: 0.75rem;
     border-bottom: 1px solid rgba(200, 168, 90, 0.15);
+}
+
+/* ——— Pedido confirmado: direcciones y datos bancarios ——— */
+.misaki-checkout .woocommerce-bacs-bank-details {
+    margin-top: 1.5rem;
+    text-align: left;
+}
+
+.misaki-checkout .wc-bacs-bank-details-heading {
+    color: var(--misaki-gold);
+    font-family: var(--misaki-title-font);
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.misaki-checkout .woocommerce-customer-details .woocommerce-columns.col2-set {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+    margin: 0;
+}
+
+.misaki-checkout .woocommerce-customer-details .col-1,
+.misaki-checkout .woocommerce-customer-details .col-2 {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100%;
+}
+
+.misaki-checkout .woocommerce-customer-details address {
+    margin: 0.5rem 0 0;
+    font-style: normal;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.misaki-checkout .woocommerce-customer-details address p {
+    margin: 0.35rem 0 0;
+}
+
+@media (min-width: 40rem) {
+    .misaki-checkout .woocommerce-customer-details .woocommerce-columns.col2-set {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 /* ——— Botones ——— */
