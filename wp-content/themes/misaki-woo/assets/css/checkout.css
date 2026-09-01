@@ -402,7 +402,7 @@
 
 /* ——— Pedido confirmado ——— */
 .misaki-checkout .woocommerce-order {
-    max-width: min(100%, 36rem);
+    max-width: min(100%, 48rem);
     margin: 0 auto;
     padding: 1.75rem 1.5rem 2rem;
     border: 1px solid rgba(200, 168, 90, 0.28);
@@ -492,18 +492,33 @@
 }
 
 .misaki-checkout .woocommerce-customer-details .woocommerce-columns.col2-set {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 1rem;
     width: 100%;
     margin: 0;
 }
 
+.misaki-checkout .woocommerce-customer-details .woocommerce-columns.col2-set::before,
+.misaki-checkout .woocommerce-customer-details .woocommerce-columns.col2-set::after {
+    display: none !important;
+    content: none !important;
+}
+
+.misaki-checkout .woocommerce-customer-details .woocommerce-column,
 .misaki-checkout .woocommerce-customer-details .col-1,
 .misaki-checkout .woocommerce-customer-details .col-2 {
     float: none !important;
-    width: 100% !important;
+    width: auto !important;
     max-width: 100%;
+    min-width: 0;
+    margin: 0 !important;
+    padding: 1rem;
+    border: 1px solid rgba(200, 168, 90, 0.22);
+    border-radius: 0.75rem;
+    background: #fff;
+    box-sizing: border-box;
 }
 
 .misaki-checkout .woocommerce-customer-details address {
@@ -518,9 +533,9 @@
     margin: 0.35rem 0 0;
 }
 
-@media (min-width: 40rem) {
+@media (max-width: 29.99rem) {
     .misaki-checkout .woocommerce-customer-details .woocommerce-columns.col2-set {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: 1fr;
     }
 }
 
