@@ -142,5 +142,5 @@ Luego completar o revisar el wizard en **WP Admin → Complianz** (región EU, s
   ```
 
   Luego completar el onboarding en **WP Admin → Payments** (cuenta WordPress.com + verificación Stripe/KYC, modo live). El sitio debe ser público (sin Basic Auth de Traefik); si no, Jetpack falla con “site must be publicly accessible”.
-- **Coming soon**: desactivado en local; no debería bloquear la vista en producción.
+- **MySQL host en prod**: usar `misakidrinks_db:3306` (no `db:3306`). En la red compartida `root_default`, el hostname `db` puede resolver a MySQL de otros proyectos.
 - Desarrollo local sigue usando `docker-compose.yml` y `.env.example` (puerto `8080`).
