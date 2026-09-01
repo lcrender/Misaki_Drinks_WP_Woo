@@ -43,7 +43,12 @@ services:
       - root_default
 
   wordpress:
-    image: wordpress:6-apache
+    build:
+      context: ./docker/wordpress
+      dockerfile: Dockerfile
+      args:
+        WORDPRESS_BASE: wordpress:6-apache
+    image: misakidrinks/wordpress:6-apache-soap
     container_name: misakidrinks_wp
     restart: always
     depends_on:

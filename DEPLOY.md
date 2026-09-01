@@ -143,4 +143,14 @@ Luego completar o revisar el wizard en **WP Admin → Complianz** (región EU, s
 
   Luego completar el onboarding en **WP Admin → Payments** (cuenta WordPress.com + verificación Stripe/KYC, modo live). El sitio debe ser público (sin Basic Auth de Traefik); si no, Jetpack falla con “site must be publicly accessible”.
 - **MySQL host en prod**: usar `misakidrinks_db:3306` (no `db:3306`). En la red compartida `root_default`, el hostname `db` puede resolver a MySQL de otros proyectos.
+- **MRW / etiquetas**: la imagen WordPress incluye la extensión PHP **SOAP** (`docker/wordpress/Dockerfile`). Tras cambios en el Dockerfile:
+
+  ```bash
+  cd /opt/misakidrinks
+  docker compose -f docker-compose.prod.yml build wordpress
+  docker compose -f docker-compose.prod.yml up -d wordpress
+  docker compose -f docker-compose.prod.yml exec wordpress php -m | grep -i soap
+  ```
+
+  Debe listar `soap`. Sin eso, MRW no genera etiquetas.
 - Desarrollo local sigue usando `docker-compose.yml` y `.env.example` (puerto `8080`).

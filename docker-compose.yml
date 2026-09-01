@@ -19,7 +19,12 @@ services:
       retries: 10
 
   wordpress:
-    image: wordpress:latest
+    build:
+      context: ./docker/wordpress
+      dockerfile: Dockerfile
+      args:
+        WORDPRESS_BASE: wordpress:latest
+    image: misakidrinks/wordpress:local-soap
     container_name: misakidrinks-wp
     depends_on:
       db:
